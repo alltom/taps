@@ -1,0 +1,56 @@
+/*
+from taps
+---
+instantiate a chuck VM somewhere 
+maintain list of templates created by chuck scripts
+add controls to clean up templates on another face
+a template lookup
+loading a .ck file makes a ScriptTemplate
+
+
+from chuck
+---
+add api
+access template loader
+
+// example
+Tapestream taps => dac;
+
+// allocate
+Template temp;
+// read from file
+"foo.taps" => temp.read;
+// or read from library
+"orig_short(1)" => temp.loadFromLibrary;
+
+// connect
+temp => dac;
+// play
+temp.play();
+// stop
+temp.stop();
+
+
+
+// class Tapestream (extends UGen_Stereo)
+Tapestream::
+  void addToLibrary( Template );
+  Template loadFromLibrary( string name );
+
+
+// class TapsTemplate
+Template::
+  int read( string filename );
+  int readFromLibrary( string name );
+  Template copy();
+  string name();
+  string name( string );
+
+  float gain( float );
+  float pan( float );
+  float freq_warp( float );
+  float time_stretch( float );
+  float periodicity( float );
+  float density( float );
+  float random( float );
+*/

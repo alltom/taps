@@ -1,0 +1,19 @@
+
+CC=gcc
+INCLUDES=-I../ui/ -I../treesynth/ts/ -I../v1/ -I../../../chuck_dev/v2/
+FLAGS=-D__MACOSX_CORE__ -D__USE_SNDFILE_PRECONF__ $(INCLUDES) -O3 -c
+LIBS=-framework CoreAudio -framework CoreMIDI -framework CoreFoundation -framework OpenGL -framework GLUT -framework AppKit -framework Carbon -lstdc++ -lm -lsndfile
+
+OBJS= analysis.o transient.o sceptre.o driver.o synthesis.o birdbrain.o \
+pvc.o FeatureLibrary.o RegionComparer.o main.o
+
+birdbrain: $(OBJS)
+	gcc -o birdbrain $(OBJS) $(LIBS)
+
+.o: $*.h
+        
+.c.o: $*.h $*.c
+	$(CC) $(FLAGS) $(INCLUDES) $*.c
+        
+.cpp.o: $*.h $*.cpp
+	$(CC) $(FLAGS) $(INCLUDES) $*.cpp

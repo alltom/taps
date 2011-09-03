@@ -1,0 +1,191 @@
+\begin{thebibliography}{\protect\citename{van~den Doel et~al\mbox{.} }2004}
+
+\bibitem[\protect\citename{Amatriain and Arumi }2005]{Amatriain05}
+{\sc Amatriain, X., and Arumi, P.}
+\newblock 2005.
+\newblock Developing cross-platform audio and music applications with the clam
+  framework.
+\newblock In {\em Proceedings of the International Computer Music Conference}.
+
+\bibitem[\protect\citename{Athineos and Ellis }2003]{Athineos03}
+{\sc Athineos, M., and Ellis, D.~P.}
+\newblock 2003.
+\newblock Sound texture modelling with linear prediction in both time and
+  frequency domains.
+\newblock In {\em Proceedings of 2003 IEEE International Conference on
+  Acoustics, Speech, and Signal Processing}.
+
+\bibitem[\protect\citename{Bello et~al\mbox{.} }2005]{Bello05}
+{\sc Bello, J.~P., Daudet, L., Abdallah, S., Duxbury, C., Davies, M., and
+  Sandler, M.~B.}
+\newblock 2005.
+\newblock A tutorial on onset detection in music signals.
+\newblock {\em IEEE Transactions on Speech and Audio Processing 13}, 5.
+
+\bibitem[\protect\citename{Bregman }1990]{Bregman90}
+{\sc Bregman, A.~S.}
+\newblock 1990.
+\newblock {\em Auditory Scene Analysis: The Perceptual Organization of Sound}.
+\newblock The MIT Press.
+
+\bibitem[\protect\citename{Cook }2002a]{Cook02}
+{\sc Cook, P.~R.}
+\newblock 2002.
+\newblock Modeling bill's gait: Analysis and parametric synthesis of walking
+  sounds.
+\newblock In {\em Proceedings of Audio Engineer Society 22nd Conference on
+  Virtual, Synthetic and Entertainment Audio}.
+
+\bibitem[\protect\citename{Cook }2002b]{CookBook}
+{\sc Cook, P.~R.}
+\newblock 2002.
+\newblock {\em Real Sound Synthesis for Interactive Applications}.
+\newblock A. K. Peters.
+
+\bibitem[\protect\citename{Dobashi et~al\mbox{.} }2003]{Dobashi03}
+{\sc Dobashi, Y., Yamamoto, T., and Nishita, T.}
+\newblock 2003.
+\newblock Real-time rendering of aerodynamic sound using sound textures based
+  on computational fluid dynamics.
+\newblock In {\em Proceedings of ACM SIGGRAPH 2003}, 732--740.
+
+\bibitem[\protect\citename{Dolson }1986]{Dolson86}
+{\sc Dolson, M.~B.}
+\newblock 1986.
+\newblock The phase vocoder: A tutorial.
+\newblock {\em Computer Music Journal 10}, 4, 14--27.
+
+\bibitem[\protect\citename{Dubnov et~al\mbox{.} }2002]{Dubnov02}
+{\sc Dubnov, S., Bar-Joseph, Z., El-Yaniv, R., Lischinski, D., and Werman, M.}
+\newblock 2002.
+\newblock Synthesizing sound textures through wavelet tree learning.
+\newblock {\em IEEE Computer Graphics and Applications 22}, 4.
+
+\bibitem[\protect\citename{Ellis }1994]{Ellis94}
+{\sc Ellis, D. P.~W.}
+\newblock 1994.
+\newblock A computer implementation of psychoacoustic grouping rules.
+\newblock In {\em Proceedings of the 12th International Conference on Pattern
+  Recognition}.
+
+\bibitem[\protect\citename{Klingbeil }2005]{Klingbeil05}
+{\sc Klingbeil, M.}
+\newblock 2005.
+\newblock Software for spectral analysis, editing, and synthesis.
+\newblock In {\em Proceedings of the International Computer Music Conference},
+  107--110.
+
+\bibitem[\protect\citename{McAulay and Quatieri }1986]{McAulay86}
+{\sc McAulay, R.~J., and Quatieri, T.~F.}
+\newblock 1986.
+\newblock Speech analysis/synthesis based on a sinusoidal representation.
+\newblock {\em IEEE Transactions on Acoustics, Speech, and Signal Processing
+  34}, 4.
+
+\bibitem[\protect\citename{Melih and Gonzalez }2000]{Melih00}
+{\sc Melih, K., and Gonzalez, R.}
+\newblock 2000.
+\newblock Source segmentation for structured audio.
+\newblock In {\em IEEE International Conference on Multimedia and Expo (II)},
+  811--814.
+
+\bibitem[\protect\citename{Miner and Caudell }1997]{Miner97}
+{\sc Miner, N.~E., and Caudell, T.~P.}
+\newblock 1997.
+\newblock Using wavelets to synthesize stochastic-based sounds for immersive
+  virtual environments.
+\newblock In {\em Proceedings of 1997 International Conference on Auditory
+  Display}.
+
+\bibitem[\protect\citename{Mortensen and Barrett }1995]{Mortensen95}
+{\sc Mortensen, E.~N., and Barrett, W.~A.}
+\newblock 1995.
+\newblock Intelligent scissors for image composition.
+\newblock In {\em Proceedings of ACM SIGGRAPH 1995}, 191--198.
+
+\bibitem[\protect\citename{O'Brien et~al\mbox{.} }2001]{OBrien01}
+{\sc O'Brien, J., Cook, P., and Essl, G.}
+\newblock 2001.
+\newblock Synthesizing sounds from physically based motion.
+\newblock In {\em Proceedings of ACM SIGGRAPH 2001}.
+
+\bibitem[\protect\citename{Qi et~al\mbox{.} }2002]{Qi02}
+{\sc Qi, Y., Minka, T.~P., and Picard, R.~W.}, 2002.
+\newblock Bayesian spectrum estimation of unevenly sampled nonstationary data.
+\newblock MIT Media Lab Technical Report Vismod-TR-556, October.
+
+\bibitem[\protect\citename{Rocchesso et~al\mbox{.} }2003]{Rocchesso03}
+{\sc Rocchesso, D., Bresin, R., and Fernström, M.}
+\newblock 2003.
+\newblock Sounding objects.
+\newblock {\em IEEE Multimedia 10}, 2.
+
+\bibitem[\protect\citename{Rother et~al\mbox{.} }2004]{Rother04}
+{\sc Rother, C., Kolmogorov, V., and Blake, A.}
+\newblock 2004.
+\newblock Grabcut -- interactive foreground extraction using iterated graph
+  cuts.
+\newblock In {\em Proceedings of ACM SIGGRAPH 2004}, 309--314.
+
+\bibitem[\protect\citename{Serra }1989]{Serra89}
+{\sc Serra, X.}
+\newblock 1989.
+\newblock {\em A System for Sound Analysis / Transformation / Synthesis based
+  on a Deterministic plus Stochastic Decomposition}.
+\newblock PhD thesis, Stanford University.
+
+\bibitem[\protect\citename{Takala and Hahn }1992]{Takala92}
+{\sc Takala, T., and Hahn, J.}
+\newblock 1992.
+\newblock Sound rendering.
+\newblock In {\em Proceedings of ACM SIGGRAPH 1992}, 211--220.
+
+\bibitem[\protect\citename{Thornburg and Leistikow }2003]{Thornburg03}
+{\sc Thornburg, H.~D., and Leistikow, R.~J.}
+\newblock 2003.
+\newblock Analysis and resynthesis of quasi-harmonic sounds: An iterative
+  filterbank approach.
+\newblock In {\em Proceedings of 6th International Conference on Digital Audio
+  Effects}.
+
+\bibitem[\protect\citename{Tsingos et~al\mbox{.} }2004]{Tsingos04}
+{\sc Tsingos, N., Gallo, E., and Drettakis, G.}
+\newblock 2004.
+\newblock Perceptual audio rendering of complex virtual environments.
+\newblock In {\em Proceedings of ACM SIGGRAPH 2004}, 249--258.
+
+\bibitem[\protect\citename{van~den Doel et~al\mbox{.} }2001]{Doel01}
+{\sc van~den Doel, K., Kry, P.~G., and Pai, D.~K.}
+\newblock 2001.
+\newblock Foleyautomatic: Physically-based sound effects for interactive
+  simulation and animation.
+\newblock In {\em Proceedings of ACM SIGGRAPH 2001}.
+
+\bibitem[\protect\citename{van~den Doel et~al\mbox{.} }2004]{Doel04}
+{\sc van~den Doel, K., Knott, D., and Pai, D.~K.}
+\newblock 2004.
+\newblock Interactive simulation of complex audio-visual scenes.
+\newblock {\em Presence: Teleoperators and Virtual Environments 13}, 1.
+
+\bibitem[\protect\citename{Verma and Meng }1998]{Verma98}
+{\sc Verma, T.~S., and Meng, T.~H.}
+\newblock 1998.
+\newblock An analysis/synthesis tool for transient signals that allows a
+  flexible sines+transients+noise model for audio.
+\newblock In {\em Proceedings of 1998 IEEE International Conference on
+  Acoustics, Speech, and Signal Processing}, 12--15.
+
+\bibitem[\protect\citename{Wang et~al\mbox{.} }2005]{Wang05}
+{\sc Wang, J., Bhat, P., Colburn, R.~A., Agrawala, M., and Cohen, M.~F.}
+\newblock 2005.
+\newblock Interactive video cutout.
+\newblock In {\em Proceedings of ACM SIGGRAPH 2005}.
+
+\bibitem[\protect\citename{Zhu and Wyse }2004]{Zhu04}
+{\sc Zhu, X., and Wyse, L.}
+\newblock 2004.
+\newblock Sound texture modeling and time-frequency lpc.
+\newblock In {\em Proceedings of 7th International Conference on Digital Audio
+  Effects}.
+
+\end{thebibliography}

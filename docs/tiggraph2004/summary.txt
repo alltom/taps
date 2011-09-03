@@ -1,0 +1,138 @@
+summary (main points):
+
+- Contributions are not clearly defined.
+- Our relation to previous work is not clearly defined.
+- Some details are unclear.
+- Need more (didactic) examples and figures.
+- We should explain the user interface better.
+- Evaluation is needed but ways for doing it are vague.
+
+questions:
+- Should we draw parallels to image/video texture synthesis or vision?
+- How much detail should we have for people without background in sound?
+- Which parts can we get away with not implementing?
+- Ideas for user studies and error metrics?
+
+
+non-summary:
+
+// We have achieved perfection
+// (except in the following areas).
+
+Q2. Main contribution
+-It is not clear what is new about our approach? Is it the system or more 
+than that?
+-We should more clearly define any new algorithms / contributions.
+-Say early on what types of sound the system can handle (which previous 
+systems can't).
+
+Q3. Related work
+-List advantages and disadvantages for each of the previous approaches.
+-Relate each of them to our approach.
+-Should we draw parallels to image/video textures or computer vision?
+
+Q4. Organization
+-State the importance of the transformations. (In previous methods you 
+can't transform them but we will be able to.)
+-Pick a specific example of a difficult task a sound designer might 
+accomplish and explain how the transformation options work out.
+-Add section numbers to the pipeline diagram.
+-Lay out the structure of the paper up front.
+-Make the definitions of deterministic and transient events clearer.
+-Define a section of "Useful Terms" including deterministic events, 
+transient events, residue, stochastic sounds, spectral noise, etc. Have 
+example of each if possible. 
+-Restructure 4: Preprocessing, Classificiation, Sinusoidal Modeling, Event 
+Representation, Residual Extraction.
+-No discussion of transient identification in section 4.
+-In 4, 5 and 6 it's hard to keep track of what each piece does and how 
+everything fits together. 
+-Clearly say which parts are optional and which are automated.
+-Section 3 is intuitive but too long, and Shirley was surprised to finish 
+the section and realize it wasn't exactly a summary of what was to follow. 
+Should it be?
+-The organization is good.
+
+Q5. Writing style / Figures
+-Good and clear, yet difficult to understand. (Which parts?)
+-Starts out wordy and repetitive (intro) and gets progressively more (and 
+overly) terse.
+-Second paragraph of abstract could be deleted.
+-How much should we accommodate people with no sound background?
+-Use recurring example in sections 4, 5 and 6 and show how it changes in 
+each step.
+-Map each transformation to describable results / examples.
+-Pseudocode in some places may help.
+-User interaction part is unclear.
+	
+-Need more figures.
+-Figure to explain sinusoidal modelling section. (Waterfall plot to show 
+what a peak/track may look like?) And for stochastic modelling too. (How?)
+-Didactic diagrams in later sections. (Example?)
+
+Figure 1:
+-Highlight difference of scale in figure 1.
+-Spectrum of transients?
+
+Figure 2:
+-Arrows between pipeline blocks imply that things are done in groups 
+whereas they are actually stages.
+-Figure 2 could possibly use a caption.
+-Component separation in figure 2 could be a part of analysis.
+
+Q6. Details
+-Shorten.
+-Basic structure's okay but some domain-specific details need to be 
+explained better. (Make distinction between algorithm choice and 
+housekeeping.) Currently only people with serious background can make 
+sense of it.
+-More implementation details needed.
+-Too many techniques listed without indication of which ones we used? And 
+which ones can be found from our citations.
+-If we run into roadblocks, what would be the contributions from what has 
+been completed, or what will soon be completed?
+-4.1 needs a MARSYAS reference.
+-Some say 4.2 should be completed, but some say it has the right level of 
+detail. Robot cannot deal with this input.
+-6.1 and 6.2 seem critical and need more detail.
+-5 is not detailed but seems less critical to the Big Picture.
+
+Q7. Results / Evaluation
+-Present (at least) 3 examples, each with figures like fig 1 and 
+qualitative analysis (describing in words exactly how it sounds).
+-How would we evaluate such a system? Error metrics? User study? (Have 
+user guess which sounds are synthesized and which are original?)
+-Comparison to previous methods here too. Justify the complexity of this 
+(possibly by implementing a simpler algorithm).
+-Video.
+-Provide examples with and without different components of our method to 
+investigate how the different components add to the final result. (What 
+are some of these components?)
+-Embed sound samples into pdf and into physical document. 
+-Try it on structured sounds like music (or talking).
+-Mention running time for various steps, and computation time versus time 
+spent by user on tweaking.
+-How much human intervention is necessary?
+-Limitations, tradeoffs and drawbacks invisible.
+
+Q8. Overall
+
+Strengths:
+-Tom believes this will work.
+-Strong motivation of sound textures for Siggraph.
+
+Weaknesses:
+-Contributions are not clear, in the context of related work.
+-Motivate our particular approach instead of just the problem of sound 
+texture synthesis.
+-Complex algorithm.
+-Sound examples / results.
+
+Comments:
+-Which parts should we implement first? What can we show if some parts of 
+the pipeline are not implemented?
+-The paper will still be strong without spatial localization.
+-The challenge is to investigate/evaluate how the components combine to 
+make a better system.
+-Have compelling sound texture example in introduction and video.
+-Does user control contradict the concept of a texture?

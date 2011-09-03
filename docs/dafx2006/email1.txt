@@ -1,0 +1,87 @@
+Dear Ananya,
+
+On behalf of the DAFx-06 Program Committee, I am pleased  
+to inform you that your paper entitled:
+
+        A New Paradigm for Sound Design
+
+has been accepted for
+
+        Oral Presentation.
+
+
+
+At the end of this email you will find comments from the reviewers.  
+You will get another email regarding your paper layout.
+
+Please confirm reception of both emails.
+
+Note that registration will open on June 23rd (http://www.dafx.ca/ 
+dafx06_registration.html).
+
+
+   Philippe Depalle, Program Chair, DAFx-06
+   papers@dafx.ca
+
+-------------------------------------------------------------------
+Instructions for camera-ready paper submission
+
+Camera-ready submission deadline: June 30, 2006
+
+Camera-ready submission guidelines are provided on the Web Submission  
+system page at:
+https://papers.dafx.ca/
+
+Your paper ID is: 85 
+Your new password is: tlIvDGPT
+
+Submissions have to be compressed archives (.zip, .bz, or .gz only) of:
+- your camera-ready paper (as a .pdf)
+- the source files (.tex or .doc)  as well as the figures
+- the BibTeX bibliography (as a .bib file)
+
+We would appreciate that all authors (using Word or LaTeX) submit  
+their bibliography as a BibTeX file. This would allow us to generate  
+a complete bibliography for the proceedings. Thanks.
+
+--------------------------------------------------------------------
+Reviewers' Summaries
+
+------  Reviewer 123  
+This paper describes a software framework and signal processing techniques for analysis and synthesis of sound scenes by decomposition into deterministic events, transient events, and background residue.
+
+------  Reviewer 124  
+A method of auditory scene analysis, modification and resynthesis.
+
+
+--------------------------------------------------------------------
+Reviewers' Comments
+
+------  Reviewer 123  
+Although the abstract mentions that spatial positioning is controllable at resynthesis, spatial analysis/synthesis is not covered in the rest of the paper.  Can the imput or output audio scenes be two-channel or multi-channel?  If so, how is spatial information processed?
+
+In order to fully extract a foreground event from a sound scene, it is necessary to extract its reverberation too, if any is present.  If that is not a feature of the system, it the paper should specify that applications are essentially limited to sound scenes recorded in reverberation-free environments.
+
+The paper seems to indicate that deterministic events are extracted before transient events.  Does the order matter?  Why?
+
+Section 6.2.  It would be useful to briefly summarize the wavelet tree resynthesis method and provide a bibliography reference for “Daubechies, 5 vanishing moments”.
+
+Section 6.3.  Typo: “The improved wavelet tree algorithm [sythesizes] _synthesizes_ unlimited background texture”.
+
+
+------  Reviewer 124  
+While the global goals are very interesting, this paper would seem to suffer from a misconception of what sound events are (how they are produced and what kinds of acoustical information they are composed of). The deterministic/stochastic separation, for example, ignores the fact that many pitched events have noisy components to them, particulary the noise transients in musical instrument sounds to pick one obvious example. Another is the ball bouncing used as an example of a Transient sound in the paper. It would indeed have a transient portion, but also a brief but characteristic resonance that carries information about the size of the ball, it's material composition and even the extent to which it is blown up. One can't extract, modify and reinsert the whole event if one hasn't captured all of its components in the extraction phase. Also the foreground/background distinction is fraught with misconception as well. All backgrounds are composed of sound sources, just as foreg
+ rounds are. What criteria are used to make such an arbitrary distinction?
+
+Given the ambiguities in the definition of these basic concepts, it is hard to understand how the system can actually perform the operations the authors claim it can perform.
+
+
+--------------------------------------------------------------------
+Bibliography Comments
+
+------  Reviewer 123  
+
+
+------  Reviewer 124  
+
+

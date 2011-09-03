@@ -1,0 +1,9 @@
+http://pages.cpsc.ucalgary.ca/~parker/new/c53/paper.html
+
+Z. Bar-Joseph, D. Lischinski, and M. Werman, Granular Syn thesis of Sound Textures Using Statistical Learning, Proceed ings ICMC, 1999.
+
+N. N. Saint-Arnaud and K. Popat, Analysis and Synthesis of Sound Textures, Proc. IJCAI-95 Workshop on Computational Auditory Scene Analysis, Montreal, August 1995, Pp. 125- 131. 
+
+I. Xenakis, Formalized Music, Indiana University Press, Bloomington, 1971.
+
+Y. Xu, B. Guo, and H. Shum, Chaos Mosaic: Fast and Mem ory Efficient Texture Synthesis, Technical report MSR-TR- 2000-32, Microsoft Research, April, 2000. 

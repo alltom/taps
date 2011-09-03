@@ -1,0 +1,38 @@
+##############################################################
+#    SndObj OS X makefile
+#    makes:    all
+#              install
+##############################################################
+
+CC	=	g++
+      
+libDir  =   ../../lib
+iDir    =    ../../include 
+binDir = ../../bin
+
+LIBNAME = $(libDir)/libsndobj.a
+LIB    = -L../../lib -lsndobj
+
+DEFS = -DMACOSX 
+CFLAGS = -O2 -I$(iDir) $(DEFS) -I/system/library/frameworks/coreaudio.framework/headers
+LFLAGS = -framework coreaudio
+ext = 
+
+progrs = cvoc sinus  streson  schroeder 
+
+pdlib = morph~.pd_darwin
+
+all: $(progrs)
+
+morph~: $(pdlib)
+
+install: $(progrs)
+	 mv $(progrs) $(binDir)
+
+$(progrs): %$(ext) : %.cpp 
+	$(CC) -o $@ $(CFLAGS) $< $(LIB) $(LFLAGS) 
+        
+$(pdlib): % : morph_tilde.cpp 
+	$(CC) -bundle -undefined suppress -flat_namespace -o ../../lib/$@ $(CFLAGS) $< $(LIB)
+
+

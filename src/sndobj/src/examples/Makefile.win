@@ -1,0 +1,31 @@
+##############################################################
+#    SndObj CYGWIN makefile
+#    makes:    all
+#              install
+##############################################################
+
+CC	=	g++
+      
+libDir  =   ../../lib
+iDir    =    ../../include
+binDir = ../../bin
+
+LIBNAME = $(libDir)/libsndobj.a
+LIB    = -L../../lib -lsndobj 
+
+DEFS = -DWIN 
+CFLAGS = -O2 -I$(iDir) $(DEFS) -Xlinker --enable-stdcall-fixup 
+LFLAGS = -lwinmm
+ext = .exe
+
+progrs = midisynth$(ext) pluck$(ext) streson$(ext)  \
+schroeder$(ext) cvoc$(ext) sinus$(ext)
+
+all: $(progrs)
+
+install: $(progrs)
+	 mv $(progrs) $(binDir)
+
+$(progrs): %$(ext) : %.cpp 
+	$(CC) -o $@ $(CFLAGS) $< $(LIB) $(LFLAGS) 
+

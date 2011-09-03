@@ -1,0 +1,257 @@
+/*----------------------------------------------------------------------------
+    TAPESTREA: Techniques And Paradigms for Expressive Synthesis, 
+               Transformation, and Rendering of Environmental Audio
+      Engine and User Interface
+
+    Copyright (c) 2006 Ananya Misra, Perry R. Cook, and Ge Wang.
+      http://taps.cs.princeton.edu/
+      http://soundlab.cs.princeton.edu/
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+    U.S.A.
+-----------------------------------------------------------------------------*/
+
+//-----------------------------------------------------------------------------
+// file: taps_treesynth.h
+// desc: taps wavelet tree synthesis
+//
+// author: Ananya Misra (amisra@cs.princeton.edu)
+//         Perry R. Cook (prc@cs.princeton.edu)
+//         Ge Wang (gewang@cs.princeton.edu)
+// date: Autumn 2004
+//-----------------------------------------------------------------------------
+#ifndef __TREESYNTH_H__
+#define __TREESYNTH_H__
+
+// libsndfile
+/*#ifndef __USE_SNDFILE_PRECONF__
+#include <sndfile.h>
+#else
+#include "util_sndfile.h"
+#endif*/
+
+#include "ui_audio.h"
+
+// Treesynth object
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+#include <assert.h>
+#include "util_daub.h"
+
+#define TS_FLOAT float
+#define TS_UINT  unsigned int
+
+#define CUTOFF (1 << 18)
+#define MAX_TREE_SIZE (CUTOFF << 1)
+#define TS_BIG_BUFFER_SIZE  CUTOFF
+#define TS_BIG_BUFFER_COUNT 8
+#define TS_BUFFER_SIZE  2048;
+
+
+struct Node
+{
+    TS_FLOAT * value; // Can point to value in m_values_ instead of reproducing, right?
+    TS_UINT * cs;
+    TS_UINT cslength;
+
+    Node * parent;
+    Node * left;
+    Node * right;
+
+    Node() {value = NULL; cs = NULL; cslength = 0; parent = NULL; left = NULL; right = NULL;}
+    ~Node();
+};
+
+
+class Tree
+{
+public:
+    Tree();
+    ~Tree();
+    
+    bool initialize( TS_UINT levels );  // init by levels => size is power of 2 by default
+    void shutdown();
+
+public:
+    inline TS_FLOAT getValue( TS_UINT level, TS_UINT offset );
+    inline Node * getNode( TS_UINT level, TS_UINT offset );
+    TS_FLOAT * values();
+    void setValues( TS_FLOAT * values, TS_UINT size ); // just for convenience
+    TS_UINT getSize();
+    TS_UINT getLevels();
+    void resetLevels( TS_UINT levels ); // to change the size dynamically
+    void zero(); // zero out m_nodes_ and m_values_
+
+protected:
+    Node * m_nodes_;
+    TS_FLOAT * m_values_;
+    TS_UINT m_size_;
+    TS_UINT m_levels_;
+};
+
+
+class Treesynth
+{
+public:
+    Treesynth();
+    ~Treesynth();
+    
+    bool initialize();
+    void shutdown();
+
+    double FindEpsilon( Tree * the_tree, int size, double P );
+    short Ancestors( int lev, int nod, int csl );
+    short Predecessors( int lev, int nod, int csl );
+    void CandidateSet(int lev, int nod );
+    bool setup( void );
+    void synth( void );
+    Tree * outputTree();
+    TS_FLOAT * outputSignal();
+    void resetTreeLevels( TS_UINT lev );
+    void resetTrees();
+
+    // the trees
+    Tree * tree;
+    Tree * lefttree;
+    
+    // treesynth knobs
+    
+    // If we make these private and implement a bunch of methods to set/get them,
+    // they can always check the values before setting and be safe.
+    float kfactor; // the thing that actually determines npredecessors
+    bool randflip; // whether first 2 coefficients are copied in order or randomly
+    double percentage; // percentage of nodes to be considered when learning new tree
+    bool ancfirst; // whether learning is first done on ancestors or predecessors
+    int startlevel;
+    int stoplevel; // changed later in the program
+            
+protected:    
+    Tree * tnew_data;
+    Tree * tnew;
+    TS_FLOAT * synsig; // synthesized signal
+
+    bool leftinit;
+
+    int npredecessors; // number of predecessors checked
+    double epsilon; // closeness threshold; calculated from percentage
+    
+    int * cands;
+    bool * in;
+    short * S; 
+    short * L;
+};
+
+
+enum TheReadModes
+{
+    // actions
+    RM_STOP = 0x0,
+    RM_WRAP = 0x1,
+    RM_BOUNCE = 0x2,
+    RM_STATIONARY = 0x4,
+
+    // directions
+    RM_FORWARD = 0x8,
+    RM_BACKWARD = 0x10,
+    RM_RANDOM = 0x20,
+
+    // don't or this in
+    RM_ACTION_MASK = 0x7,
+    RM_DIRECTION_MASK = ~RM_ACTION_MASK
+};
+
+
+class TreesynthIO
+{
+public:
+    // FUNKY THINGS:
+
+    TreesynthIO();
+    ~TreesynthIO();
+
+    // actual stuff
+    int m_audio_cb( char * buffer, int buffer_size, void * user_data );
+    bool audio_initialize( int (*audio_cb) (char *, int, void *), TS_UINT srate );
+    void set_next_pos( const char * filename );
+
+    int ReadSoundFile( char filename[], TS_FLOAT * data, int datasize );
+    int WriteSoundFile( char filename[], TS_FLOAT * data, int datasize );
+    
+    //void clear();
+
+    // imaginary stuff?
+    TS_UINT get_srate();
+
+    // DATA:
+    
+    // INPUT AND OUTPUT sound file names and info
+    char ifilename[1024];
+    char ofilename[1024];
+    char leftfile[1024];
+
+    // INPUT reading mode
+    int rm_mode;
+
+    // OUTPUT synthesized signal size (# of samples)    
+    int nsamples;
+
+    // OUTPUT whether to write to file and/or buffer (for real-time playing)
+    bool write_to_file;
+    bool write_to_buffer;
+
+protected:
+    // MORE DATA:
+    Treesynth * m_treesynth_; // just a harmless pointer...
+    bool leftinit;  // delete if not used
+
+    // INPUT AND OUTPUT sound files and info
+    SF_INFO readinfo, writeinfo;
+    SNDFILE * sfread;
+    SNDFILE * sfwrite;
+
+    // INPUT reading position and length
+    int rm_next_pos;
+    int rm_next_length;
+
+    // OUTPUT real-time stuff
+    int g_write_index;
+    int g_read_index;
+    TS_FLOAT g_big_buffer[TS_BIG_BUFFER_COUNT][TS_BIG_BUFFER_SIZE];
+    int g_buffer_samples[TS_BIG_BUFFER_COUNT]; // how many samples have been written into each of the big buffers
+
+    TS_FLOAT * g_audio_begin;
+    TS_FLOAT * g_audio_end;
+
+    int g_buffer_size;
+    TS_UINT g_data_count;
+    TS_UINT g_max_data_count;
+    int g_ready;
+    int g_callbacking;
+    
+    TS_UINT g_srate;
+};
+
+
+// floating functions (aka internal hacks)
+template <class T> T our_min(T a, T b);
+double pow( int x, int n );
+short maximum(short *array, int size);
+int lg( int n );
+int compare( const void *arg1, const void *arg2 );
+
+
+#endif
+

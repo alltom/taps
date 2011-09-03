@@ -1,0 +1,225 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+		 TAPESTREA template schema
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="template" type="temptype"/>
+
+	<xs:complexType name="temptype">
+		<xs:attribute name="type" type="xs:int"/>
+		<xs:attribute name="id" type="xs:long"/>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="typestr" type="xs:string"/>
+		<xs:sequence>
+			<xs:element name="analysisinfo" type="analysistype" minOccurs="0"/>
+			<xs:element name="storageinfo" type="storagetype"/>
+			<xs:element name="synthesisinfo" type="synthesistype"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="synthesistype"/>
+		<xs:sequence>
+			<xs:element name="gain" type="xs:double"/>
+			<xs:element name="pan" type="xs:double"/>
+			<xs:element name="time_stretch" type="xs:double"/>
+			<xs:element name="freq_warp" type="xs:double"/>
+			<xs:element name="periodicity" type="xs:double"/>
+			<xs:element name="density" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="analysistype"/>
+		<xs:sequence>
+			<xs:element name="origfilename" type="xs:string"/>
+			<xs:element name="time_start" type="xs:ulong"/>
+			<xs:element name="time_end" type="xs:ulong"/>
+			<xs:element name="freq_low" type="xs:double"/>
+			<xs:element name="freq_high" type="xs:double"/>
+			<xs:choice>
+				<xs:element name="detanal" type="detanaltype"/>
+				<xs:element name="trananal" type="trananaltype"/>
+				<xs:element name="rawanal" type="rawanaltype"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="detanaltype">
+		<xs:sequence>
+			<xs:element name="numtracks" type="xs:ulong"/>
+			<xs:element name="minpoints" type="xs:ulong"/>
+			<xs:element name="maxgap" type="xs:ulong"/>
+			<xs:element name="freq_sense" type="xs:double"/>
+			<xs:element name="peak_to_noise" type="xs:double"/>
+			<xs:element name="thresh_tilt" type="xs:double"/>
+			<xs:element name="thresh_mag type="xs:double"/>
+			<xs:element name="group_harmonics" type="xs:float"/>
+			<xs:element name="group_frequency" type="xs:float"/>
+			<xs:element name="group_amplitude" type="xs:float"/>
+			<xs:element name="group_overlap" type="xs:float"/>
+			<xs:element name="group_onset" type="xs:float"/>
+			<xs:element name="group_offset" type="xs:float"/>
+			<xs:element name="group_minlen" type="xs:float"/>
+			<xs:element name="group_used" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="trananaltype">
+		<xs:sequence>
+			<xs:element name="attack" type="xs:double"/>
+			<xs:element name="decay" type="xs:double"/>
+			<xs:element name="threshold" type="xs:double"/>
+			<xs:element name="aging" type="xs:double"/>
+			<xs:element name="mingap" type="xs:long"/>
+			<xs:element name="maxlen" type="xs:long"/>
+			<xs:element name="longframe" type="xs:long"/>
+			<xs:element name="shortframe" type="xs:long"/>
+			<xs:element name="energy_ratio_used" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rawanaltype">
+		<xs:sequence>
+			<xs:element name="rolloff" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storagetype">
+		<xs:choice>
+			<xs:element name="detstorage" type="detstoragetype"/>
+			<xs:element name="transtorage" type="transtoragetype"/>
+			<xs:element name="resstorage" type="resstoragetype"/>
+			<xs:element name="rawstorage" type="rawstoragetype"/>
+			<xs:element name="loopstorage" type="loopstoragetype"/>
+			<xs:element name="tlstorage" type="tlstoragetype"/>
+			<xs:element name="bagstorage" type="mbstoragetype"/>
+			<xs:element name="filestorage" type="filestoragetype"/>
+			<xs:element name="scrstorage" type="scrstoragetype"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="detstoragetype">
+		<xs:sequence>
+			<xs:element name="numtracks" type="xs:long"/>
+			<xs:element name="track" type="tracktype" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>		
+	</xs:complexType>
+
+	<xs:complexType name="tracktype">
+		<xs:sequence>
+			<xs:element name="history" type="historytype" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="size" type="xs:long"/>
+		<xs:attribute name="id" type="xs:long"/>
+		<xs:attribute name="state" type="xs:long"/>
+		<xs:attribute name="start" type="xs:double"/>
+		<xs:attribute name="end" type="xs:double"/>
+		<xs:attribute name="phase" type="xs:double"/>
+		<xs:attribute name="historian" type="xs:long"/>
+	</xs:complexType>
+
+	<xs:complexType name="historytype">
+		<xs:attribute name="index" type="xs:long"/>
+		<xs:attribute name="freq" type="xs:double"/>
+		<xs:attribute name="mag" type="xs:double"/>
+		<xs:attribute name="phase" type="xs:double"/>
+		<xs:attribute name="time" type="xs:double"/>
+		<xs:attribute name="bin" type="xs:uint"/>
+		<xs:attribute name="ismatched" type="xs:boolean"/>
+	</xs:complexType>
+
+	<xs:complexType name="transtoragetype">
+		<xs:sequence>
+			<xs:element name="frame" type="xs:frametype"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="frametype">
+		<xs:attribute name="wlen" type="xs:long"/>
+		<xs:attribute name="wsize" type="xs:long"/>
+		<xs:attribute name="time" type="xs:double"/>
+		<xs:sequence>
+			<xs:element name="samples" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rawstoragetype">
+		<xs:sequence>
+			<xs:element name="frame" type="xs:frametype"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="resstoragetype">
+		<xs:choice>
+			<xs:element name="wavelettree" type="xs:treesynthtype/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="treesynthtype">
+		<xs:sequence>
+			<xs:element name="total_levels" type="xs:int"/>
+			<xs:element name="requested_levels" type="xs:int"/>
+			<xs:element name="lefttree" type="xs:boolean"/>
+			<xs:element name="io_filename" type="xs:string"/>
+			<xs:element name="io_leftfile" type="xs:string"/>
+			<xs:element name="io_ofilename", type="xs:string"/>
+			<xs:element name="io_rm_mode", type="xs:int"/>
+			<xs:element name="io_write_to_buffer", type="xs:boolean"/>
+			<xs:element name="io_write_to_file", type="xs:boolean"/>
+			<xs:element name="ts_percentage", type="xs:double"/>
+			<xs:element name="ts_kfactor", type="xs:double"/>
+			<xs:element name="ts_stoplevel" type="xs:int"/>
+			<xs:element name="ts_startlevel" type="xs:int"/>
+			<xs:element name="ts_randflip" type="xs:boolean"/>
+			<xs:element name="ts_ancfirst" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="loopstoragetype">
+		<xs:attribute name="randomness" type="xs:double"/>
+		<xs:element name="event" type="eventtype"/>
+	</xs:complexType>
+
+	<xs:complextype name="eventtype"/>
+		<xs:attribute name="template" type="temptype"/>
+	</xs:complexType>
+
+	<xs:complexType name="tlstoragetype">
+		<xs:attribute name="duration" type="xs:double"/>
+		<xs:attribute name="num_instances" type="xs:int"/>
+		<xs:attribute name="loop" type="xs:int"/>
+		<xs:attribute name="start" type="xs:double"/>
+		<xs:attribute name="stop" type="xs:double"/>
+		<xs:sequence>
+			<xs:element name="instance" type="insttype" minOccur="0" maxOccur="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="insttype">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long"/>
+			<xs:element name="start_time" type="xs:double"/>
+			<xs:element name="end_time" type="xs:double"/>
+			<xs:element name="y_offset" type="xs:double"/>
+			<xs:element name="template" type=temptype"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="mbstoragetype">
+		<xs:attribute name="num_marbles" type="xs:int"/>
+		<xs:sequence>
+			<xs:element name="marble" type="marbtype" minOccur="0" maxOccur="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="marbtype">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long"/>
+			<xs:element name="play_once" type="xs:boolean"/>
+			<xs:element name="likelihood" type="xs:ulong"/>
+			<xs:element name="randomness" type="xs:double"/>
+			<xs:element name="template" type="xs:temptype"/>
+		</xs:sequence>
+	</xs:complexType>

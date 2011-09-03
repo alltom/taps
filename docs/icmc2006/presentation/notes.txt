@@ -1,0 +1,16 @@
+slides?
+video?
+demo?
+
+want to show everything (but maybe new examples)
+- basic templates
+- loops
+- timelines
+- mixed bags
+- scripts
+- quantization
+
+analysis
+- det (sines, groups, res)
+- trans (bursts, res)
+- raw (specgram region with variable rolloff)

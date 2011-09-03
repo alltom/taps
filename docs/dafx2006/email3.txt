@@ -1,0 +1,38 @@
+Dear Ananya,
+
+We would like authors to help us simplifying as possible the general bibliography creation, by following these further indications. Note that: 
+- LaTeX users are concerned by steps 1 to 7.
+- Word users are only concerned by steps 3, 6 and 7.
+We tried this additional procedure on 6 papers, and it only took 15 minutes for each (but it may take 15'x65= 975' = 16h15 to us!!!), this is why we ask for your kind help. 
+
+Before uploading your paper, please:
+1- create a bibtex file that only contains the few citations you use in the paper (please filter your full bibliography file if any). 
+2- rename you bibtex file and you LaTeX files using your ID. For example, paper id 16 will have following files: 16.tex and 16.bib. Please replace "16" by your ID you all you documents names, tags, etc.
+3- rename the tags of your references using "paper:ID:" at the beginning of each tag. For example, 
+___________
+@book{Schafer:1975,
+	Author = {R.~M. Schafer},
+	Publisher = {Knopf, New York},
+	Title = {The Tuning of the World},
+	Year = {1977}}
+___________
+becomes
+___________
+@book{paper:16:Schafer:1975,
+		:
+		:
+___________
+4- use those tags inside your ID.tex file. A basic find "cite{" and replace with "cite{paper:ID" will do most of the job. 
+5- make sure that you include in your ID.bib file all the pre-defined strings (such as "jasa", "icmc") you may use, if any.
+6- create another file called "ID_cite.txt" containing the list of citations, as follows for a 2 references paper: 
+___________
+cite{paper:16:Schafer:1975,citepaper:16:Zoelzer:2002}
+___________
+We will use this command to include your local references at the right place  in the proceedings, thus providing valid back-references.
+7- create the archive, and upload it!
+
+Thanks for you patience and your kind help.
+Feel free to contact me for any particular question / assistance concerning the edition of proceedings.
+
+__
+Vincent Verfaille, DAFx-06 proceedings editor

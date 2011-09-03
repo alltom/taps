@@ -1,0 +1,180 @@
+Examples
+---
+
+Traffic
+Components: car horns, screeching, engines accelerating, cars passing by (doppler), engines
+starting, motorcycle, random bangs and pops (dangerous road), sirens, indistinct chatter, 
+general din.
+Transition: busy intersection to road
+
+Aquatic etc.
+Components: squawks, ocean, ocean waves, whale, bubbles, wind, typhoon, foghorn, whistling wind, 
+dolphins, seals.
+Transition: beach to deep ocean
+
+CS department
+Components: enhanced typing tutor, indistinct chatter, printing, doors, paper rustling, walking, 
+running, eating, drinking, washing, pouring, spilling, talking(!), filing, soda, chairs twirlig, 
+computer beeping.
+Transition: work to eat
+
+Factory/Hibben
+Components: hammering, pounding, sawing, drilling, blowtorching, yelling, wheeling, craning, 
+robotic assembling, geese, dinky, bell, rain, mud, boots.
+Transition: factory to hibben
+
+Outside Gathering
+Components: children screaming, fighting, crying, laughing, speaker (human), music, announcing,
+crowd noises.
+Transition: riot (adults doing the above, chair throwing, glass breaking) to anger (group shouting) 
+to not happy (booing) to happy (clapping, whistling, crowd whistling) to overjoyed (cheering, laughing).
+
+Battlefield (virtual)
+Components: machine guns, explosion, grenades, tanks, yelling, group yelling, planes, footsteps,
+swords, elephant, cavalry, bow and arrow, muskets, cannons, catapults, bombing. 
+Transition: modern to medieval to ancient to cavemen fighting
+
+
+Figures
+---
+architecture diagram
+spectograms of original, sinusoidal, residual (birds & ocean, birds, no birds)
+user interface diagram
+spectogram of wavelet-tree reordered background texture
+
+
+unclassifiable points
+---
+our wavelet tree optimization: only synthesizing some levels
+
+quick hack? marsyas segmenting - basic threshold-based segmentation, only apply wavelet tree 
+to subsegments, or see if segmented parts have more sinusoids - smarter version of dafxtflpc 
+event detection
+
+sinusoidal flux (how sinusoidal it is)
+
+spectral modeling in perry's book, 6.2, 6.3
+
+hierarchy: our code > sndobj > clam
+
+
+our outline
+---
+
+abstract
+
+1. Introduction
+   1.1 Motivation
+       - "i have this sound texture, I want to produce more of it.
+          and in this way (clarifify)"
+       - give sound designers automation tool
+   1.2 Our general approach (what we are describing in this paper)
+
+2. Related Work
+   2.1 Simulation or model-based
+       - interactive (contact) sounds
+         - foley automatic (2001)
+         - bill's gait (2002)
+         - dinesh pa
+       - perceptual rendering (2004)
+         - model-based
+         - sound sources correspond to actual entities in (virtual) environment
+   2.2 Analysis - Transformation - Re-synthesis of Environmental Sounds
+       - texture synthesis from existing ambient/background/environment
+         sounds (of limited length)
+       - dubnov et. al.  (2002)
+         - showed how to take apart and synthesize more of it but...
+         - individual events not good for chopping up, not good for repeating
+       - LPC failes (probably)
+         - good for micro-transients
+       - we come in here...
+         - event identification/isolation/transformation/(authentification)
+           (better analysis)
+         - take better advantage of wavelet tree learning 
+         - separation of control over background and events
+           (more control during synthesis)
+         - more potential for interactivity
+
+3. An Example / Overview of contribution
+   3.1 pipeline
+       - input
+       - analysis, event separation
+       - transformation
+       - synthesis
+       - output
+       - control points
+   3.2 list of contribution
+
+4. Event Identification and Isolation
+   4.1 preprocessing
+   4.2 sinusoidal modeling
+       - event tracking
+   4.3 residual Extraction
+       - segmentation of residue using event information
+   4.4 classification (too much)
+       - use this only to get consistently correct results
+   4.5 event representation
+
+5. Transformation
+   5.1 stochastic Modeling
+       - wavelet tree learning works better
+   5.2 event transformations
+       - place events spatially
+       - because parametric, we can use any SMS technique for transformation
+
+6. Synthesis
+   6.1 background stochastic generation
+       - same as 5.1
+   6.2 deterministic event synthesis
+       - place according to distribution
+       - user control is possible
+   6.3 putting it all together
+       - flexible - automatic vs. explicit vs. hybrid
+       - address ease of control
+
+7. Results
+   7.1 implementation
+       - architecture
+   7.2 sound examples
+       - classes of sound
+       - put earlier: waveform at various stages of the pipeline
+       - (need a web page)
+   7.3 evaluation
+       - error metrics
+       - user study?
+
+8. Conclusion and Future Work
+   8.1 contributions
+       - relationship to and improvement over existing methods
+   8.2 limitations
+   8.3 potential extensions and ideas
+
+Acknowledgements
+
+References
+
+@manual{exluna2002,
+  title = {Entropy 3.1 Technical Reference},
+  organization = {Exluna, Inc.},
+  year = {2002},
+  month = {January}
+}
+
+@book{parke:1996:CFA,
+  author = "Frederic I. Parke and Keith Waters",
+  title = "Computer Facial Animation",
+  year = 1996,
+  publisher = "A. K. Peters",
+}
+
+@mastersthesis{yee:2000:SSA,
+  author = "Yang Li Hector Yee",
+  title = "Spatiotemporal sensistivity and visual attention for efficient rendering of dynamic environments",
+  school = "Cornell University",
+  year = 2000,
+}
+
+// maybe use this instead of X's thesis in the bib
+Serra, X. Smith, J. 1990. 
+'Spectral Modeling Synthesis:A Sound Analysis/Synthesis Based on a Deterministic plus Stochastic Decomposition'
+Computer Music Journal Vol.14 .4 12-24 

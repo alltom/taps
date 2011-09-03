@@ -1,0 +1,25 @@
+
+CC=gcc
+INCLUDES=
+FLAGS=-D__MACOSX_CORE__ -g -c -O3
+LIBS= -framework coreaudio -framework coremidi -framework corefoundation -lstdc++ -lm -lsndfile
+
+OBJS=rt_treesynth++_levs.o daub.o RtAudio.o Stk.o
+
+rt_treesynth++: $(OBJS)
+	$(CC) -o rt_treesynth++ $(OBJS) $(LIBS)
+
+rt_treesynth++_levs.o: rt_treesynth++_levs.cpp daub.h
+	$(CC) $(FLAGS) rt_treesynth++_levs.cpp
+
+daub.o: daub.h daub.cpp
+	$(CC) $(FLAGS) daub.cpp
+
+RtAudio.o: RtAudio.h RtAudio.cpp
+	$(CC) $(FLAGS) RtAudio.cpp
+
+Stk.o: Stk.h Stk.cpp
+	$(CC) $(FLAGS) Stk.cpp
+
+clean: 
+	rm -f rt_treesynth++ *~ *.o

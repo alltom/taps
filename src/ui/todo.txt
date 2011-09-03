@@ -1,0 +1,86 @@
+
+
+tapestrea
+
+thanks.
+
+bye.
+
+---
+
+hello.
+
+no.
+
+---
+
+boo.
+
+stop it.
+
+ok.
+
+---
+
+ready?
+
+no!!!
+
+ok fine.
+
+---
+
+now?
+
+no!
+
+---
+
+dooooooom
+
+dooooooom: command not found.
+
+---
+
+SYNTHESIS
+
+timeline:
+- scaling
+- length
+- change/move/delete items from the timeline
+- map height to something? (pan?) (loudness?) (frequency of crash?)
+- tick marks
+
+library:
+- delete items from the library
+- scrollbar? border?
+- save and load
+- sort (name, type)? search? and destroy?
+- scripts???  (no!)
+
+loop:
+- periodicity and poisson, transition
+
+transient:
+- phase vocoder
+
+
+ANALYSIS
+
+- should be faster and be able to handle bigger files
+- finalize cube not spinning / add progress indicator cube
+- zoom on waveform / spectrum
+- cache fft's for entire file, or as we take them?
+
+bugs:
+- it's perfect
+- except for: 
+    - fix hit detection (butters) (synthesis)
+	- residue put on timeline sounds weird (but doesn't crash as often as it used to)(++)
+    - sometimes the program (analysis + synthesis) crashes right when you start it (thread error)
+	- overlap add when writing residue file (loudness strange?) (analysis) (we are almost happy for now)
+
+potential bugs/features:
+- make sure it still works on other OS's
+- uncrashability
+

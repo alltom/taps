@@ -1,0 +1,113 @@
+Hi Perry,
+
+Here's the current (subject to change) outline and other things.
+
+We think it would be good to have just a few introductory slides and a long series of demos that Ge and I take turns to astound the audience with.
+The demo outline is included below (right after the slide outline). Any thoughts?
+
+Also, can we meet later tomorrow? We're both likely to be working late tonight...
+
+Thanks!
+
+
+Slide 1
+---
+Motivation
+- Musique Concrete
+- Acousmatics
+- Sound Design
+
+Slide 2
+---
+Goal: a single framework for transforming recorded sounds on multiple levels
+
+- results lie anywhere on the found to unrecognizable continuum
+
+Slide 3 (not sure about order of 3, 4, 5)
+---
+Introducing TAPESTREA
+- idea of interactively extracting reusable templates
+- transforming them independently
+- recombining them in different ways
+
+this is re-composition
+
+Slide 4
+---
+Related work
+- spectral modeling (serra et al)
+- granular synthesis (truax, roads)
+- dubnov
+- transient analysis, auditory scene analysis, sound editors...
+
+Slide 5
+---
+Very brief overview of taps
+
+- 3 types of sounds
+- separate methods for analysis and synthesis
+- UI
+
+Slide 6
+---
+Transformations
+- massive freq and time
+- density and periodicity
+
+Slide 7-9 (could go after the demo?)
+---
+Conclusion / Contributions / Future work
+
+
+Demo (this is also where we explain relevant technical details)
+
+---
+
+1. basic tour of analysis
+- load a file
+- show waveform and then specgram
+- play the thing (toggle to spectrum)
+- select a region, extract
+- play back deterministic + residue
+- save
+- select another, extract
+- play back deterministic + residue
+- save
+- show library view with saved templates
+
+2. advanced analysis
+- load a second file or use the same one
+- det sliders, magnitude and tilt, #...
+- extract baby (or other challenging sound)
+- transients
+- extract baby (or other challenging sound)
+- transients
+- extract easy transient
+- show residue and explain the cavity filling
+- talk about groups and raw and briefly, maybe extract raw
+
+3. synthesis part 1
+- move into face
+- explain the different parts of the face
+- load more stuff
+- explain different types of templates
+- ding and baby
+- residue
+- transients
+- raw?
+
+4. synthesis part 2
+- ding loop
+- 1 period
+- change density
+- freq warp time stretch
+- quantize, use script
+- timelines
+- overload the time line with det, tra, loops, time lines
+- mixed bag
+
+5. scripting
+- scripts
+- bus example
+- auto example
+- joystick example

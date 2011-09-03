@@ -1,0 +1,22 @@
+
+CC=gcc
+INCLUDES=-I../../ui -I../../v1 -I../../../../chuck_dev/v2
+FLAGS=-D__MACOSX_CORE__ -D__USE_SNDFILE_PRECONF__ $(INCLUDES) -c -O3
+LIBS= -framework coreaudio -framework coremidi -framework corefoundation -lstdc++ -lm -lsndfile
+
+OBJS=test.o daub.o Eliot.o
+
+Eliot: $(OBJS)
+	$(CC) -o Eliot $(OBJS) $(LIBS)
+
+test.o: test.cpp
+	$(CC) $(FLAGS) test.cpp
+
+daub.o: daub.h daub.cpp
+	$(CC) $(FLAGS) daub.cpp
+
+Eliot.o: Eliot.h Eliot.cpp
+	$(CC) $(INCLUDES) $(FLAGS) Eliot.cpp
+
+clean: 
+	rm -f rt_treesynth++ *~ *.o

@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: taps_acmm09.aux
+The style file: abbrv.bst
+Database file #1: fullnames.bib
+Database file #2: taps_acmm09.bib
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            606 strings with 6685 characters,
+and the built_in function-call counts, 1816 in all, are:
+= -- 156
+> -- 117
+< -- 0
++ -- 48
+- -- 40
+* -- 122
+:= -- 330
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 37
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 71
+empty$ -- 135
+format.name$ -- 40
+if$ -- 361
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 5
+newline$ -- 34
+num.names$ -- 12
+pop$ -- 45
+preamble$ -- 2
+purify$ -- 32
+quote$ -- 0
+skip$ -- 43
+stack$ -- 0
+substring$ -- 32
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 24
+warning$ -- 0
+while$ -- 12
+width$ -- 7
+write$ -- 66

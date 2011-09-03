@@ -1,0 +1,64 @@
+
+CC=gcc
+BIRDBRAIN_DIR=../v1
+ELIOT_DIR=../treesynth/ts
+UI_DIR=../ui
+CHUCK_DIR=../../../chuck_dev/v2
+INCLUDES=-I$(BIRDBRAIN_DIR) -I$(ELIOT_DIR) -I$(UI_DIR)
+FLAGS=-D__MACOSX_CORE__ -O3 -c
+LIBS=-framework CoreAudio -framework CoreMIDI -framework CoreFoundation -framework OpenGL -framework GLUT -framework AppKit -framework Carbon -framework IOKit -lstdc++ -lm
+
+BASE_OBJS= audicle_event.o audicle_face.o audicle_gfx.o audicle_geometry.o \
+	audicle_utils.o audicle.o audicle_main.o ui_analysis.o \
+	ui_audio.o rtaudio.o util_thread.o ui_element.o ui_treesynth.o \
+	ui_synthesis.o audicle_ui_base.o audicle_elcidua.o ui_library.o \
+	ui_audiofx.o ui_control.o ui_search.o
+
+CHUCK_OBJS= $(CHUCK_DIR)/chuck.tab.o $(CHUCK_DIR)/chuck.yy.o \
+	$(CHUCK_DIR)/chuck_absyn.o $(CHUCK_DIR)/chuck_parse.o \
+	$(CHUCK_DIR)/chuck_errmsg.o $(CHUCK_DIR)/chuck_frame.o \
+	$(CHUCK_DIR)/chuck_symbol.o $(CHUCK_DIR)/chuck_table.o \
+	$(CHUCK_DIR)/chuck_utils.o $(CHUCK_DIR)/chuck_vm.o \
+	$(CHUCK_DIR)/chuck_instr.o $(CHUCK_DIR)/chuck_scan.o \
+	$(CHUCK_DIR)/chuck_type.o $(CHUCK_DIR)/chuck_emit.o \
+	$(CHUCK_DIR)/chuck_compile.o $(CHUCK_DIR)/chuck_dl.o \
+	$(CHUCK_DIR)/chuck_oo.o $(CHUCK_DIR)/chuck_lang.o \
+	$(CHUCK_DIR)/chuck_ugen.o $(CHUCK_DIR)/chuck_otf.o \
+	$(CHUCK_DIR)/chuck_stats.o $(CHUCK_DIR)/chuck_bbq.o \
+	$(CHUCK_DIR)/chuck_shell.o $(CHUCK_DIR)/chuck_console.o \
+	$(CHUCK_DIR)/chuck_globals.o $(CHUCK_DIR)/digiio_rtaudio.o \
+	$(CHUCK_DIR)/midiio_rtmidi.o $(CHUCK_DIR)/rtmidi.o \
+	$(CHUCK_DIR)/ugen_osc.o $(CHUCK_DIR)/ugen_filter.o \
+	$(CHUCK_DIR)/ugen_stk.o $(CHUCK_DIR)/ugen_xxx.o \
+	$(CHUCK_DIR)/ulib_machine.o $(CHUCK_DIR)/ulib_math.o \
+	$(CHUCK_DIR)/ulib_std.o $(CHUCK_DIR)/ulib_opsc.o \
+	$(CHUCK_DIR)/util_buffers.o $(CHUCK_DIR)/util_console.o \
+	$(CHUCK_DIR)/util_math.o $(CHUCK_DIR)/util_network.o \
+	$(CHUCK_DIR)/util_raw.o $(CHUCK_DIR)/util_string.o \
+	$(CHUCK_DIR)/util_xforms.o $(CHUCK_DIR)/util_opsc.o \
+	$(CHUCK_DIR)/hidio_sdl.o $(CHUCK_DIR)/util_hid.o
+
+OBJS= $(BASE_OBJS)
+
+# scripting enable
+INCLUDES+=-I$(CHUCK_DIR)
+FLAGS+=-D__TAPS_SCRIPTING_ENABLE__
+BASE_OBJS+=ui_scripting.o
+LIBS+=$(CHUCK_OBJS)
+
+# whether to use preconfigured
+FLAGS+=-D__USE_SNDFILE_PRECONF__
+LIBS-=-lsndfile
+LIBS+=$(CHUCK_DIR)/util_sndfile.o
+
+
+taps: $(OBJS)
+	rm -f $(BIRDBRAIN_DIR)/main.o; gcc -o taps $(OBJS) $(BIRDBRAIN_DIR)/*.o $(ELIOT_DIR)/*.o $(LIBS)
+
+.o: $*.h
+        
+.c.o: $*.h $*.c
+	$(CC) $(FLAGS) $(INCLUDES) $*.c
+        
+.cpp.o: $*.h $*.cpp
+	$(CC) $(FLAGS) $(INCLUDES) $*.cpp

@@ -1,0 +1,116 @@
+
+video script
+---
+
+TITLE: 
+(10 seconds)
+
+
+
+
+INTRODUCTION
+(10 seconds)
+
+[narrator]: 
+
+  - motivation
+    - we are sensitive to details/events in a sound scene,
+	  even adding/removing details/events can place the listener in a very different environment
+  - challenges
+    - sound is complex
+	- an out-of-box resynthesis does not offer enough control
+	  (want to separate a particular sound, for example)
+  - what we address
+    - we present a technique to model sound scenes by example: 
+    - separate existing "sound scenes" into 
+      - D
+	  - T
+	  - S
+    - which can be used as templates to build sound scenes
+
+
+
+[narrator]: we are able to do ...
+
+ANALYSIS
+
+example (garbage)
+- on loading a sound, we see its waveform & spectrogram
+- we can also view a frame-by-frame spectrum
+	- observe the changing spectral characteristics of the sound over time [play short sound]
+	- deterministic events are easy to locate - peaks
+- separate the sound into deterministic and stochastic parts (and transient) [click separate]
+- now we can listen to the components separately [play event and residue]
+    - (we could point out how the spectrum for the det. event has only the peaks while the residue spectrum
+	  has these peaks flattened out, but i think we shouldn't waste time on that unless we have nothing else to say)
+
+more involved example 
+- our tool also makes it easy to extract specific events. [load different sound file]
+- selecting a rectangle on the sgram causes the analysis to be performed only in the specified time & freq range
+  so you can grab the event you want 
+  [switch views] [maybe separate without changing any other parameters for the sake of comparison]
+- other controls [sneakily adjust these for your sound file while you describe these]
+	- thresholds for deterministic events
+		- threshold - lower bound for magnitude
+		- tilt - being able to apply different lower bounds for different frequencies
+		- peak-to-noise ratio - how loud an event should be compared to the average loudness of the frame?
+	- controls for tracking events
+		- minpoints - an event should be at least this long to be extracted
+		- maxgap - (ignore?) to account for brief pauses within an event
+		- freq-sense - (ignore?) acceptable range for changes in an event's frequency (pitch?) across time
+- and now [separate] - the sound you wanted! (rephrase...:)...)
+
+
+SYNTHESIS
+
+having extracted a collection of deterministic events, transients and background, we can now use these to construct
+sound scenes.
+
+[we are now in synthesis face]
+
+[do the appropriate actions that will construct the scene we have in mind]:
+- [pick a residue and listen to it] background brought to you by enhanced wavelet tree learning
+- [pick a determinstic event and listen to it] event brought to you by sinusoidal synthesis
+  - [apply transformations and listen to result] brought to you by SMS
+- [pick a transient and listen to it] woohoo. we never thought we'd be doing this.
+- [pick an event and loop it] we can loop events! 
+	- periodic or random
+	- optional random changes to freq-warp, time-stretch, gain and pan
+	- density (events per second / minute / hour / other duration)
+- [make a new timeline, add stuff] we can add templates to a timeline and save the timeline itself as a template [save
+	timeline as template] and add it to a newer timeline of longer duration [do that too].
+- [do whatever else we need for the final sound]
+- [sit back, shut up and enjoy the show]
+
+- [synthesize some applause]
+
+second synthesis example? - something from the same analysis templates, but mixed to sound different.
+- point out the sounds are from different sources
+- [show sndpeek]
+
+
+SUMMARY
+
+// free for $1000!
+// reserve your copy today!
+
+
+[we are done (after filling out the gap above)]
+
+
+USER INTERFACE
+
+  - description of major components
+    - waveform
+	- spectrum
+	- spectrogram
+	- sliders
+	- other
+
+
+
+  - SMS crash course (15 seconds)
+    - sine + noise
+	- spectrum vs. spectrogram
+	- separation
+	- play resynthesis and residue

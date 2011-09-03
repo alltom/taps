@@ -1,0 +1,47 @@
+##############################################################
+#    SndObj 2.5 ALSA makefile
+#    makes: all    
+#           install   
+##############################################################
+
+CC	=	g++
+      
+libDir  =   ../../lib
+iDir    =    ../../include
+binDir = ../../bin
+
+# if you want jack, uncomment this line
+LIBJACK = #-ljack
+
+LIBNAME = $(libDir)/libsndobj.a
+LIB    = -lasound $(LIBJACK) -L../../lib -lsndobj 
+
+# if you want jack, add -DJACK here (by uncommenting)
+
+DEFS = -DALSA #-DJACK
+CFLAGS =  -O2 -I$(iDir) $(DEFS)
+LFLAGS = -lpthread
+
+progrs = streson  \
+schroeder cvoc sinus
+
+pdlib = morph~.pd_linux
+
+all: $(progrs)
+
+morph~: $(pdlib)
+
+install: $(progrs)
+	 mv $(progrs) $(binDir)
+
+$(progrs): %$(ext) : %.cpp 
+	$(CC) -o $@ $(CFLAGS) $< $(LIB) $(LFLAGS) 
+
+$(pdlib): % : morph_tilde.cpp 
+	$(CC) -shared -o../../lib/$@ $(CFLAGS) $< $(LIB)
+
+
+
+
+
+

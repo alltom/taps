@@ -1,0 +1,28 @@
+Dear DAFx-06 author,
+
+I would like to inform you that we did some improvements of the LaTeX  
+"dafx_06.sty" file (attached) as well as the templates (on the web  
+site: http://www.dafx.ca/dafx06_templates.html).
+
+You do NOT need to update (we will use this style for the proceedings  
+making) your files, EXCEPT if having problems when compiling with  
+usual "latex" and not "pdfeTeX".
+
+Please feel free to contact me for further information, help on the  
+edition, etc.
+
+Regards,
+--
+Vincent Verfaille -  DAFx-06 Proceeding editor
+
+_____________________________
+For your information, the update of "dafx_06.sty" is solving 2 issues:
+1- an error with the title that was not automatically in upper case,
+2- an error when using the two author template, with an extra space  
+for the second author.
+
+There also is a minor change in each template, concerning an error  
+with automatic detection of use of "latex" or "pdftex" that is now  
+solved thanks to authors feedback.
+
+

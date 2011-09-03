@@ -1,0 +1,145 @@
+%
+% Clean up some drain-bamaged defaults in many style files
+%  - SMR
+%
+
+% Times/Courier/Helvetica fonts
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+\RequirePackage{pslatex}
+\RequirePackage{mathptmx}
+
+% Need to be able to include pictures...
+\RequirePackage{graphicx}
+
+% Tighten up list (itemize, enumerate) spacing
+\makeatletter
+\def\@listi{\leftmargin\leftmargini
+            \labelwidth\leftmargini
+            \advance\labelwidth-\labelsep
+            \parsep\parskip
+            \itemsep 0.3ex plus 0.2ex minus 0.2ex
+            \topsep\itemsep}
+\let\@listI\@listi
+\@listi
+\def\@listii{\leftmargin\leftmarginii
+             \labelwidth\leftmarginii
+             \advance\labelwidth-\labelsep
+             \parsep\parskip
+             \itemsep\parsep
+             \topsep\itemsep}
+\setlength\leftmargini{1.4em}
+\setlength\leftmarginii{1.4em}
+
+% Less space around equations
+\let\@originalnormalsize=\normalsize
+\renewcommand\normalsize{%
+        \@originalnormalsize
+        \abovedisplayskip 1ex \@plus 0.3ex \@minus 0.2ex
+        \abovedisplayshortskip 0.3ex \@plus 0.3ex \@minus 0.2ex
+        \belowdisplayskip\abovedisplayskip
+        \belowdisplayshortskip\belowdisplayskip
+}
+\normalsize
+
+% Less space between figures and text
+\setlength\textfloatsep{10\p@ \@plus 5\p@ \@minus 2\p@}
+
+% Less space around teaser in acmsiggraph.sty
+\@ifundefined{titlespace}{}{%
+  \setlength\titlespace{0.1in}
+  \setlength\teaserspace{0.15in}
+}
+
+% Less space before captions
+\setlength\abovecaptionskip{6\p@}
+
+% Figure out the next smaller font than \normalsize...
+\@ifundefined{titlespace}{%
+  \def\@mysmall{\small}
+}{%
+  % This is acmsiggraph.sty - \small is actually smaller than \footnotesize
+  \def\@mysmall{\footnotesize}
+}
+
+% Caption formatting
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{\@mysmall\textit{\textbf{#1:} #2}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\@mysmall\textit{\textbf{#1:} #2}\par}
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+% Section title spacing and formatting
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                {-2.3ex \@plus -1ex \@minus -.2ex}%
+                {1.5ex \@plus.2ex}%
+                {\reset@font\Large\sffamily\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                {-2.0ex\@plus -1ex \@minus -.2ex}%
+                {1.0ex \@plus .2ex}%
+                {\reset@font\large\sffamily\bfseries}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                {1.2ex \@plus1ex \@minus.2ex}%
+                {-0.7em}%
+                {\reset@font\normalsize\bfseries}}
+
+% Bibliography formatting
+\def\bibfont{\@mysmall}
+%\def\bibfont{\@setfontsize\bibfont{7.5pt}{8.5pt}}
+\def\thebibliography#1{\par\bibfont
+  \section*{%
+    \refname\@mkboth{\sl\uppercase{\refname}}{\sl\uppercase{\refname}}}
+  \list{\relax}{\setlength{\labelsep}{0em}
+                \setlength{\itemindent}{-\bibhang}
+                \setlength{\leftmargin}{\bibhang}
+		\itemsep 0pt}
+  \def\newblock{\hskip .11em plus .33em minus .07em}
+  \sloppy\clubpenalty4000\widowpenalty4000
+  \sfcode`\.=1000\relax}
+
+% Citation formatting
+\@ifundefined{bibhang}{%
+  \newlength{\bibhang}
+  \setlength{\bibhang}{1em}
+}{}
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{; }\@ifundefined
+      {b@\@citeb}{{\bf ?}\@warning
+      {Citation '\@citeb' on page \thepage \space undefined}}%
+{\csname b@\@citeb\endcsname}}}{#1}}
+\@ifundefined{@internalcite}{
+ \let\@internalcite=\cite
+ \def\cite{\def\citename##1{##1}\@internalcite}
+ \def\shortcite{\def\citename##1{}\@internalcite}
+ \def\@cite#1#2{{\rm[{\frenchspacing #1\if@tempswa , #2\fi}]}}
+ \def\@biblabel#1{}
+}{}
+
+% Lots of figures is OK
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\dbltopfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0}
+\setcounter{bottomnumber}{2}
+
+% Clean up sloppy formatting defaults
+\clubpenalty=4000
+\widowpenalty=4000
+\displaywidowpenalty=500
+
+% Nobody provides a useful \Huge - remedy that
+\renewcommand\Huge{\@setfontsize\Huge{36}{43.2}}
+
+% A couple of useful commands
+\long\def\ignore#1{}
+\def\placeholder#1#2{\fbox{\vbox to #2{\vss\hbox to #1{\hss~}\vss}}}
+\def\sfrac#1/#2{\ensuremath{{}^{#1\!}/_{\!#2}}}
+
+\makeatother
+

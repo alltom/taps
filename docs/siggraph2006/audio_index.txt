@@ -1,0 +1,76 @@
+Section 1
+---
+[audio segment 1.a]: example of clapping created in Taps
+(paragraph 2) "Hence, the generated sound should be arbitrarlily close 
+to or different from the original sounds, based on the user's intention. 
+Naive approaches such as repeatedly playing or combining raw segments of 
+original sounds do not sound convincing..."
+
+
+Section 2
+---
+no audio segments.
+
+
+Section 3
+---
+[audio segment 3.a]:  pipeline example of taking a sound scene through 
+all phases, with multiple endings/results.  this should match the text 
+(or vice versa) in the section.  it may be nice to have two complete 
+examples here.
+
+
+Section 4
+---
+4.1
+[audio segment 4.a]: yes.  something to go with figure 3: separating 
+sinusoidal tracks from stochastic residue.
+
+[audio segment 4.b]: group example?  two overlapping groups separated.
+
+[audio segment 4.c]: 2 or 3 short examples of sinusoidal extraction, 
+maybe with different parameters?
+
+4.2
+[audio segment 4.d]: yes.  something to go with figure 4: transient removal 
+and hole filling.
+
+[audio segment 4.e]: contrast transient suppression with wavelet-based
+hole filling.
+
+
+Section 5
+---
+[audio segment 5.a]: frequency warping examples.
+  one for det. one for trans.
+
+[audio segment 5.b]: time-stretching.
+  one for det. one for trans.
+
+[audio segment 5.c]: temporal placement.
+  one for det. one for trans.
+
+
+Section 6
+---
+6.1
+[audio segment 6.a]: crowd examples.
+  birds, clapping, ??
+
+6.2
+[audio segment 6.b]: wavelet tree synthesis example, varying parameters 
+(maybe, since this is already in video).
+
+
+Section 8
+---
+[audio segment 8.a]: result 1
+
+[audio segment 8.b]: result 2
+
+[audio segment 8.c]: result 3
+
+[audio segment 8.d]: results for table 1.  generating background of 
+arbitrary length; effects of modified wavelet tree.
+
+[audio segment 8.e]: evaluation.  depends on which evaluation method we use.

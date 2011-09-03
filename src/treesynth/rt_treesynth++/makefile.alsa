@@ -1,0 +1,25 @@
+
+CC=gcc
+INCLUDES=
+FLAGS=-D__LINUX_ALSA__ -g -c -O3
+LIBS= -lasound -lstdc++ -lsndfile -lm
+
+OBJS=rt_treesynth++.o daub.o RtAudio.o Stk.o
+
+rt_treesynth++: $(OBJS)
+	$(CC) -o rt_treesynth++ $(OBJS) $(LIBS)
+
+rt_treesynth++.o: rt_treesynth++.cpp daub.h
+	$(CC) $(FLAGS) rt_treesynth++.cpp
+
+daub.o: daub.h daub.cpp
+	$(CC) $(FLAGS) daub.cpp
+
+RtAudio.o: RtAudio.h RtAudio.cpp
+	$(CC) $(FLAGS) RtAudio.cpp
+
+Stk.o: Stk.h Stk.cpp
+	$(CC) $(FLAGS) Stk.cpp
+
+clean: 
+	rm -f rt_treesynth++ *~ *.o

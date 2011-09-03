@@ -1,0 +1,100 @@
+Dear author,
+
+This message provides the edition notes concerning your paper. Those  
+instructions will help
+you to provide the best quality camera-ready paper for the DAFx-06  
+proceedings.
+
+Complementary informations are given at https://papers.dafx.ca/ 
+index.html about:
+     1 - What to upload?
+     2 - Using the latest version of the templates.
+     3 - bibliography as a BibTeX File that ALL authors (Word & LaTeX  
+users) should submit.
+
+Please do not hesitate to contact us in case of technical/editing  
+problem.
+Last we would appreciate that you confirm reception of this email as  
+soon as possible.
+
+Sincerely,
+
+Vincent Verfaille, DAFx-06 proceedings editor.
+
+
+________________________
+   PAPER INFORMATIONS
+________________________
+     + title: "A New Paradigm for Sound Design"
+     + electronic document produced using: LaTeX
+     + PDF file generated using: dvips - AFPL ghostscript 8.50
+     + PDF version: 1.2
+     + hyperref: No
+
+
+________________________
+      EDITION NOTES
+________________________
+
+
+______ Edition notes about text format, layout & fonts:
+- The paper format is A4 instead of letter paper format.
+   -> LaTeX users should use the last templates, WITH the command
+      \usepackage{dafx_06,amssymb,amsmath} INSTEAD of
+      \usepackage[A4]{dafx_06,amssymb,amsmath}.
+      When changing the format from A4 to letter, your text will seem  
+longer:
+      this implies to shorten your text so as to fit the required  
+length (6 pages
+      for oral presentation, 4 pages for poster).
+
+[DONE, NEEDS SHORTENING AS EXPECTED]
+
+______ Edition notes about PDF hyperref & bookmarks:
+- Hyperref are not working.
+   -> Possible reason: LaTeX compilation without pdftex.
+      please use only one of the latest templates: they all use  
+hyperrefs.
+- Bookmark does not exist.
+   -> Possible reason: LaTeX compilation without pdftex.
+      please use only one of the latest templates: they all use  
+hyperrefs.
+
+[DONE, USED JPGS AND PDFLATEX]
+
+______ Edition notes about title:
+- Non uniform layout for the authors email addresses.
+   -> In order to have the same layout for all papers in the  
+proceedings,
+      please use "{AAA|BBB|CCC}@DDD" for several emails with  
+identical affiliation.
+
+[DONE]
+
+______ Edition notes about figures:
+- Text is too small for all figures.
+   -> Please be careful to the font size in your figures. Figure font  
+size should not be
+      smaller than 9pt, and if possible they should be identical to  
+the text font size. For
+      example, to do so using Matlab, you can use the subplot(X,Y,N)  
+command before plotting
+      (X lines, Y columns): the text font size will proportionally  
+get bigger.
+- Captions must be italic for all figures.
+- All color figures are difficult to read when printed in grey scale  
+or black & white.
+   -> Please use grey scale or black & white figures, with  
+appropriate legend. For example
+      when generating sonograms with Matlab, you may use: "colormap 
+(gray);" or even better:
+      "colormap(flipud(gray));" (the latter saves black ink).
+- Figures are not vectorial & are poor quality.
+   -> Please avoid using low quality figures (bitmap, pixellized,  
+screen copy). Vectorial
+      figures (e.g. using postscript or pdf) make a noticeable  
+quality difference when
+      printed or viewed on the screen. Otherwise, use 150 dpi  
+pixellized figures.
+
+[TOTALLY NOT DONE]

@@ -1,0 +1,10 @@
+Usage:
+
+rt_treesynth++ orig.wav uses orig.wav as the original source file. Other knobs:
+
+-p <number> computes the threshold epsilon using <number> as the percentage. 
+-o <filename> specifies <filename> as the output file
+-k <number> specifies the fraction of predecessors to consult at each level
+-l <filename> specifies <filename> as the "left" file. If not specified, the original source file is used.
+-r if included allows a random flip while copying the first level of the tree into the new tree
+-a <1/0> if set to 1 or not specified, does ancestor learning first; if set to 0, does predecessor learning first

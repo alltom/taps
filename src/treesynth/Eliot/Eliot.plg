@@ -1,0 +1,37 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Eliot - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\gewang\LOCALS~1\Temp\RSP22B.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /I "..\lib" /D "_DEBUG" /D "__WINDOWS_DS__" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/Eliot.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\gewang\research\birdbrain\src\treesynth\Eliot\Eliot.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\gewang\LOCALS~1\Temp\RSP22B.tmp" 
+Creating temporary file "C:\DOCUME~1\gewang\LOCALS~1\Temp\RSP22C.tmp" with contents
+[
+dsound.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib libsndfile.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/Eliot.pdb" /debug /machine:I386 /out:"Debug/Eliot.exe" /pdbtype:sept /libpath:"..\lib" 
+.\Debug\daub.obj
+.\Debug\Eliot.obj
+.\Debug\RtAudio.obj
+.\Debug\Stk.obj
+.\Debug\test.obj
+.\libsndfile.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\gewang\LOCALS~1\Temp\RSP22C.tmp"
+<h3>Output Window</h3>
+Compiling...
+Eliot.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Eliot.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

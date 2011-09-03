@@ -1,0 +1,82 @@
+
+CC=gcc
+CHUCK_DIR=../../../chuck_dev/v2
+INCLUDES=-I$(CHUCK_DIR)
+FLAGS=-D__MACOSX_CORE__ -O3 -c
+LIBS=-framework CoreAudio -framework CoreMIDI -framework CoreFoundation -framework OpenGL -framework GLUT -framework AppKit -framework Carbon -framework IOKit -lstdc++ -lm
+
+TAPS_OBJS= taps_analysis.o taps_birdbrain.o taps_driver.o \
+	taps_featurelibrary.o taps_pvc.o taps_regioncomparer.o \
+	taps_sceptre.o taps_synthesis.o taps_transient.o taps_olar.o \
+	taps_treesynth.o util_daub.o util_readwrite.o util_base64.o
+
+UI_OBJS= audicle_event.o audicle_face.o audicle_gfx.o audicle_geometry.o \
+	audicle_utils.o audicle.o ui_analysis.o ui_group.o \
+	ui_audio.o rtaudio.o util_thread.o ui_element.o \
+	ui_synthesis.o audicle_ui_base.o audicle_elcidua.o ui_library.o \
+	ui_audiofx.o ui_control.o ui_search.o ui_filesave.o ui_main.o
+
+CHUCK_OBJS= $(CHUCK_DIR)/chuck.tab.o $(CHUCK_DIR)/chuck.yy.o \
+	$(CHUCK_DIR)/chuck_absyn.o $(CHUCK_DIR)/chuck_parse.o \
+	$(CHUCK_DIR)/chuck_errmsg.o $(CHUCK_DIR)/chuck_frame.o \
+	$(CHUCK_DIR)/chuck_symbol.o $(CHUCK_DIR)/chuck_table.o \
+	$(CHUCK_DIR)/chuck_utils.o $(CHUCK_DIR)/chuck_vm.o \
+	$(CHUCK_DIR)/chuck_instr.o $(CHUCK_DIR)/chuck_scan.o \
+	$(CHUCK_DIR)/chuck_type.o $(CHUCK_DIR)/chuck_emit.o \
+	$(CHUCK_DIR)/chuck_compile.o $(CHUCK_DIR)/chuck_dl.o \
+	$(CHUCK_DIR)/chuck_oo.o $(CHUCK_DIR)/chuck_lang.o \
+	$(CHUCK_DIR)/chuck_ugen.o $(CHUCK_DIR)/chuck_otf.o \
+	$(CHUCK_DIR)/chuck_stats.o $(CHUCK_DIR)/chuck_bbq.o \
+	$(CHUCK_DIR)/chuck_shell.o $(CHUCK_DIR)/chuck_console.o \
+	$(CHUCK_DIR)/chuck_globals.o $(CHUCK_DIR)/digiio_rtaudio.o \
+	$(CHUCK_DIR)/midiio_rtmidi.o $(CHUCK_DIR)/rtmidi.o \
+	$(CHUCK_DIR)/ugen_osc.o $(CHUCK_DIR)/ugen_filter.o \
+	$(CHUCK_DIR)/ugen_stk.o $(CHUCK_DIR)/ugen_xxx.o \
+	$(CHUCK_DIR)/ulib_machine.o $(CHUCK_DIR)/ulib_math.o \
+	$(CHUCK_DIR)/ulib_std.o $(CHUCK_DIR)/ulib_opsc.o \
+	$(CHUCK_DIR)/util_buffers.o $(CHUCK_DIR)/util_console.o \
+	$(CHUCK_DIR)/util_math.o $(CHUCK_DIR)/util_network.o \
+	$(CHUCK_DIR)/util_raw.o $(CHUCK_DIR)/util_string.o \
+	$(CHUCK_DIR)/util_xforms.o $(CHUCK_DIR)/util_opsc.o \
+	$(CHUCK_DIR)/hidio_sdl.o $(CHUCK_DIR)/util_hid.o \
+	$(CHUCK_DIR)/uana_xform.o $(CHUCK_DIR)/uana_extract.o
+
+OBJS= $(TAPS_OBJS) $(UI_OBJS)
+
+# scripting enable
+FLAGS+=-D__TAPS_SCRIPTING_ENABLE__
+OBJS+=ui_scripting.o
+# scripting disable needs most of chuck anyway due to includes
+# in latest rtaudio.cpp, so always keep this line:
+LIBS+=$(CHUCK_OBJS)
+
+# uncomment next 2  lines to use preconfigured sndfile
+#FLAGS+=-D__USE_SNDFILE_PRECONF__
+#LIBS-=-lsndfile
+#LIBS+=$(CHUCK_DIR)/util_sndfile.o
+# comment previous 2 lines and uncomment next line to use native sndfile
+LIBS+=-lsndfile
+
+# uncomment for sample-rate conversion
+#FLAGS+=-DSECRET_RABBIT_CODE
+#LIBS+=-lsamplerate
+
+# for libxml
+FLAGS+=-D__TAPS_XML_ENABLE__
+INCLUDES+=-I/usr/include/libxml2
+LIBS+=-lxml2
+
+
+taps: $(OBJS) chuck
+	gcc -o taps $(OBJS) $(LIBS)
+
+chuck:
+	make -C $(CHUCK_DIR) osx-intel
+
+.o: $*.h
+        
+.c.o: $*.h $*.c
+	$(CC) $(FLAGS) $(INCLUDES) $*.c
+        
+.cpp.o: $*.h $*.cpp
+	$(CC) $(FLAGS) $(INCLUDES) $*.cpp

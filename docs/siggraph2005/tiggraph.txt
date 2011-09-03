@@ -1,0 +1,114 @@
+how much background?
+
+tom:
+- 2 non-specialist
+- 3 specialist (but 2 non-specialist will be the ones arguing for/against us)
+- show how it's better
+- respond to methodology
+- graphics learn from sound, vice versa - this is important
+
+tom:
+- main contribution = separation into events
+- first one to do this?
+- sms for completely different purpose
+- maybe also use this graphics?  (nope)
+
+adam:
+- visual texture synthesis?
+- pertinent to design of games
+
+diego:
+- yes, for game programmer
+
+tom:
+- precedence:
+- aero-dynamic sound was top-ranked paper
+- clear observation, insight
+- why graphics people would be interested in this?
+
+misha:
+- wang tiles?  (nope)
+
+tom/adam:
+- there are many parallel  (none seems useful though)
+
+ananya:
+- which figures to add? change?
+
+misha:
+- figure 1: synthesize 3 types of sound
+- transient events needs to be better defined
+
+benedict:
+- section 4 - sms figures (simple illustration)
+
+phil:
+- human control or automated?
+
+ge:
+- generate similar texture out of box, but human controllable
+
+joshua:
+- texture graphics - I don't really care about control
+
+jason:
+- need to show video with sliders
+- turn up the birds turn up the cars
+- here is orginal corpus of audio
+- here are the events
+- you are listening to real-time audio
+- and we are demonstrating the points of our interface
+- here you will here more foreground events
+
+misha:
+- have animation
+
+tom:
+- video show in situation that graphics people care about
+
+tom:
+- more than two things
+- separation
+- system
+
+misha:
+- maybe a system paper
+- sms + wavelet tree
+
+tom:
+- system paper means more compelling results
+- video shows person watching video with sliders
+
+mike:
+- it wasn't clear why video game companies need this
+- maybe more interesting in film setting - post production
+- video game companies have stock sounds
+
+forrester:
+- ambients loops bad
+- cross fade bad
+- texture synthesis good!
+
+phil:.
+- movie is artistic control, why would they need this, which is 
+semi-automated
+
+tom:
+- if talking about games and movies
+  if features records the real-world separately anyway,
+  separation is unnecessary
+ 
+jason:
+- but this could change the ways we record for video games and movies...
+
+shirley:
+- even with recording, this can be useful
+- augment clapping
+- this is what a user could do
+- user study: reconstruct this scene (boos/applause)
+
+
+more notes:
+ui: multi-sliders with distribution for each event
+out of box - out texture resembles in texture as much as possible
+results need to awe the reviewers

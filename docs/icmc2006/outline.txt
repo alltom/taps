@@ -1,0 +1,140 @@
+Outline and stufffffff
+
+--------------------------------------------------------------
+Actual outline:
+--------------------------------------------------------------
+
+Title:
+
+Introduction: (Tell me if this is wrong)
+
+- Musique concrete, one of the earliest forms of electronic music, 
+emerged in the 1940s and 50s, pioneered by Pierre Schaeffer and others.
+It involved manipulating tape recordings of sounds, often sounds that 
+were not associated with music. Manipulations included changing the 
+speed of segments, looping them, cutting and pasting them in different 
+arrangements, reversing them, and so on. So they were all time-domain 
+techniques?
+- Eventually shifted to digital sampling instead of magnetic tape 
+manipulations. 
+- And this paved the way for other types of electronic music?
+
+- Acoustic ecology -- other end of spectrum, almost. It seems to have 
+been started as a movement for people to listen to existing natural 
+soundscapes. (This is confusing, because most "acoustic ecology" info I 
+found followed these lines - except the UBC acoustic ecology project, 
+which seemed much broader and more relevant, but didn't mention any 
+references for the broader definition. What is it really?!)
+- Murray Schafer (clearly a reincarnation of Schaeffer) - "The tuning of 
+the world"; Barry Truax - "Handbook of acoustic ecology"
+- According to Truax, this acoustic ecology deal led to a style of 
+electroacoustic music that he terms soundscape composition - creating 
+realistic soundscapes from recordings, highlighting key aspects of it 
+that a listener might otherwise miss/ignore.
+- "One of the most obvious traits is not that the pieces use 
+environmental sound materials, but rather that most pieces can be placed 
+on a continuum between what might be called 'found sound' and 
+'abstracted' approaches." Also writes that while "contemporary signal 
+processing techniques can easily render such sounds unrecognizable and 
+completely abstract", that is not soundscape composition. (Ironically, 
+from this perspective, musique concrete could be rather abstract?)
+
+- Well, tapestrea is exciting partly because you can start with your 
+favourite environmental sounds/recordings, and use this one framework 
+to produce sound anywhere on the 'found' to 'unrecognizable' continuum.
+- But if it's more on the found end, it can still be changed in subtle 
+ways (like by varying event density) and/or lengthened to whatever 
+amount you want.
+- And if what you want is more on the unrecognizable end, then you have 
+a whole range of manipulations beyond time-domain techniques. (Time 
+and frequency scaling, event placement and randomness options.)
+- In fact, same set of techniques in both cases, since they are not 
+discrete...
+- There must be more to say here in a better way.
+
+Related work:
+- Is the same work still related? (Maybe we can at least skip the list 
+of previous siggraph sound papers. That leaves sound texture synthesis 
+and sinusoidal modeling.)
+- Granular synthesis (It is time-domain, we have different time and 
+frequency scales. Related to when we synthesize events in a loop at 
+high density?)
+
+Method: 
+- Load sound
+- Extract reusable components/templates (sinusoidal analysis + grouping, 
+transients, residue)
+- Compose with them (frequency/time transformations on individual 
+components, using event distribution parameters to shape the whole 
+sound, wavelet resynthesis)
+- Here we may also add scripting ("score language" aka chuck) if it
+works. More effects from stk would be cool too if possible, though 
+maybe not in a week.
+- Optionally quantize pitches to a scale... uh, shouldn't take too  
+long, right? 
+- Interface allows interactive analysis/synthesis. 
+- Is it reasonable to have more focus on synthesis here, keeping in mind 
+that this sort of synthesis is possible only because of the preceding 
+analysis? Or is the analysis still interesting in this setting?
+
+Evaluation / Results: 
+- Yes? No? 
+- Sound samples?
+
+Conclusion: 
+- Summary
+- Future work -> can it be used live if it stops crashing?
+- Something deep
+
+References: 
+- musique concrete: original papers seem to be in french and out of 
+reach, but some other paper referred to "Computer Music Experiments, 
+1964" by Risset, 1985, Computer Music Journal 9(1). Not sure of relevance
+- truax papers on soundscape composition?
+- chuck papers (all of them and also Ge's thesis)
+- algorithm reference papers 
+
+The end:
+- Fill out
+
+--------------------------------------------------------------
+stuffffffff to make it look longer (and to act as the outline
+of the outline):
+--------------------------------------------------------------
+Instructions:
+
+- Musique concrete: read historical papers on
+- Acoustic ecology
+- Granular synthesis (eg the event resynthesis): but while granular
+  synthesis is time-domain, we have different time and frequency scales
+- Show that this is a nice workbench for these
+- New things (computer assisted human guided scene analysis, siggraph
+  stuff)
+- "initially developed for production sound design"
+- Need good title without "TAPESTREA"
+
+- Quantize pitches to a scale
+- Finish scripting; refer to as "score language" (yay, can cite chuck
+  papers for this)
+
+
+Random ideas awaiting garbage collection:
+
+--- on submission ---
+
+- Relate it to musique concrete
+- Make sure paper is different from siggraph submission
+- Ge wanted to submit a video, but it probably shouldn't be the siggraph
+  video. Maybe instead we could record and show the "making" of a
+  musical composition through the analysis and synthesis stages,
+  especially if it were a decent piece and used most of our features?
+- Can we try to do a performance? This is of course Ge's idea. I guess it
+  may not feel like a recital if we do it together... but probably it
+  would depend on the state of the software, speaking of which:
+
+--- on implementation ---
+
+- Finish adding ChucK scripting
+- Add more DSP options in synthesis, like simple but cool filters?
+- Make sliders and timeline more controllable somehow
+- What else?

@@ -1,0 +1,120 @@
+---
+0.1.0.7 
+
+  - (added) command line option to have a white background on all faces:
+            taps --whitebg
+  - (added) alternative background synthesis method using randomized 
+            overlap-add [Froejd & Horner, ICMC 2007]
+
+---
+0.1.0.6
+
+  - (fixed) reduced clickiness of loop synthesis (also in 0.1.0.5 FIXES)
+  - (fixed) crashing of --nogui mode on mac os x (also in 0.1.0.5 FIXES)
+  - (fixed) over-zealous renaming of "copied" templates when not copied by user
+  - (fixed) some timeline issues: (a) copying, (b) stopping and replaying,
+            (c) deleting one and selecting another one
+  - (fixed) copying transient and raw templates with new ids
+  - (fixed) crashes on analysis of mic input segment including endpoints
+  - (added) boundary checks for shifting (moving) tracks out of time / 
+            frequency bounds in group face
+  - (added) optionally save (& read) templates as (& from) XML files.
+            when saved from analysis face, this also stores analysis
+            information and parameters in the XML file. the XML template 
+            files can also be modified directly, including by adding your 
+            own fields that Taps will ignore.
+  - (added) small buttons for quitting TAPESTREA and toggling fullscreen 
+            (when applicable) at the top right corner of each face.
+
+---
+0.1.0.5
+
+  - (fixed) examples/templates/script/chuiexample1.ck
+  - (fixed) memory leaks in analysis face
+  - (fixed) spectrum display during file playback in analysis face
+  - (fixed) showing current value of every slider
+  - (fixed) templates created by copying an existing template in the 
+            synthesis face now have a name ending with "copy" or "loop"    
+  - (added) brand new GROUP FACE for grouping and editing tracks, by Tom 
+            Lieber
+  - (added) recording some amount of audio directly into the analysis face
+  - (added) zooming in and out of the spectrogram in the analysis face
+  - (added) selection of fft size and analysis window size from analysis 
+            face 
+            (warning: may cause interesting bugs)
+  - (added) new command line options:
+	    --outchannels N : to set # of real-time audio output channels
+	    --inchannels N : to set # of real-time audio input channels
+	    --bufsize N : to set real-time audio output buffer size
+	    --maxrecord x : to set the maximum number of seconds of audio 
+              recorded in one go in the analysis face 
+	    --overtracking x : to find extra peaks per frame before saving 
+	      the specified number of sine tracks
+  - (added) ability to start timeline's synthesis mid-template, aka 
+            "fastforwarding" a timeline to start at the point to which its 
+            left indicator is set
+            (warning: still buggy if timeline is repeatedly started while 
+            already playing)
+
+---
+0.1.0.4
+
+  (Several new features introduced, but all quite experimental.)
+
+  - (fixed) no more high CPU usage on reverb tails on Intel processors
+  - (fixed) can now have ".ck" in path names
+  - (added) 8-channel output 
+			- number of real-time audio output channels can be set to 
+			  N by command line: --channels N
+			- 8 audio buses within taps, can write to 8-channel wav file
+			  while playing in stereo
+			- template can be played on specific bus from chuck script
+  - (added) chui: chuck gui
+			- add user interface elements from chuck scripts 
+  - (added) sample rate conversion
+			- works by default in windows
+			- install libsamplerate and recompile for Mac OS X, Linux
+  - (added) new command line option: --nogui
+			- instead of running gui, synthesis can be controlled from 
+			  the command line using two or  more terminals. the first 
+			  acts as a server that receives messages from the rest on which 
+			  templates to add, remove, play or stop.
+
+---
+0.1.0.3
+
+  - (fixed) sneaky scripting bug
+  - (fixed) problems with saving files as templates from synthesis face
+  - (fixed) default max frame rate set to 30 Hz, no longer eats 80% CPU
+  - (added) buttons to navigate between faces (upper right corner)
+  - (added) standard transformations for files loaded in synthesis face
+  - (added) more command line arguments 
+			--frate N : to set frame rate
+			--dir x : to set working directory ("write to file" writes here)
+			--version : to see current version and exe target
+			--help or --about : to see version and usage info
+  - (added) default and sticky directories for open/save dialog boxes
+            (when opening from GUI shell instead of command line)
+  - (removed) unused treesynth face (from project)
+
+---
+0.1.0.2
+  
+  - (fixed) disappearing "now" indicator on analysis waveform display
+  - (fixed) saving templates as .wav or .tap files from analysis face
+  - (added) universal binaries for mac os x support
+  - (removed) broken script example
+  - (removed) extra 'save' button on analysis face
+
+---
+0.1.0.1
+
+  - (fixed) code changes to improvement portability (t_CK -> t_TAP)
+  - (fixed) compilation without native libsndfile (osx)
+  - (fixed) compilation on gcc-4 in (osx)
+  - (fixed) transient playback gain in synthesis face
+
+---
+0.1.0.0
+
+  - initialize public release

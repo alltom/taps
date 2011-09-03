@@ -1,0 +1,18 @@
+# quantization file
+# comments go on top only and must have a # in front
+# 1 '#' works for one line
+# format: 
+# first word is 'p' or 't' for "pitch" or "time"
+# second word is the number of entries in your table
+# then list all the entries
+# time entries are in seconds
+# pitch entries in terms of ratio to the fundamental? 
+# make sure you have the right number of entries.
+ 
+f 6
+1
+1.122462
+1.334840
+1.498307
+1.681793
+2

@@ -1,0 +1,38 @@
+\hyphenation{Post-Script}
+\begin{thebibliography}{1}
+
+\bibitem{Bello05}
+J.~P. Bello, L.~Daudet, S.~Abdallah, C.~Duxbury, M.~Davies, and M.~B. Sandler.
+\newblock A tutorial on onset detection in music signals.
+\newblock {\em IEEE Transactions on Speech and Audio Processing}, 13(5), 2005.
+
+\bibitem{Dubnov02}
+S.~Dubnov, Z.~Bar-Joseph, R.~El-Yaniv, D.~Lischinski, and M.~Werman.
+\newblock Synthesizing sound textures through wavelet tree learning.
+\newblock {\em IEEE Computer Graphics and Applications}, 22(4), 2002.
+
+\bibitem{Lieber08}
+T.~Lieber, A.~Misra, and P.~R. Cook.
+\newblock Freedom in {TAPESTREA}! {V}oice-aware track manipulations.
+\newblock In {\em Proceedings of the International Computer Music Conference},
+  2008.
+
+\bibitem{Misra06c}
+A.~Misra, P.~R. Cook, and G.~Wang.
+\newblock Musical tapestries: Re-composing natural sounds.
+\newblock In {\em Proceedings of the International Computer Music Conference},
+  2006.
+
+\bibitem{Serra89}
+X.~Serra.
+\newblock {\em A System for Sound Analysis / Transformation / Synthesis based
+  on a Deterministic plus Stochastic Decomposition}.
+\newblock PhD thesis, Stanford University, 1989.
+
+\bibitem{Wang03}
+G.~Wang and P.~R. Cook.
+\newblock {ChucK}: A concurrent, on-the-fly, audio programming language.
+\newblock In {\em Proceedings of the International Computer Music Conference},
+  2003.
+
+\end{thebibliography}
