@@ -542,196 +542,198 @@ UnixDirScanner::getFile( fileData * fD ) {
 
 #ifdef __PLATFORM_MACOSX__
 
+// TODO: rewrite with this: http://developer.apple.com/library/mac/#documentation/cocoa/reference/ApplicationKit/Classes/NSOpenPanel_Class/Reference/Reference.html
+
 #include <Carbon/Carbon.h>
 
-NavEventUPP gNavEventHandlerPtr;
+//NavEventUPP gNavEventHandlerPtr;
 
-void userActionCallback ( NavCBRecPtr callBackParms )
-{
-    OSStatus err;
-    long int n;
-    NavReplyRecord * nReply = new NavReplyRecord;
-    err = NavDialogGetReply ( callBackParms->context, nReply );
-    if ( err != noErr ) {
-        NavDisposeReply( nReply );
-        return;
-    } 
+//void userActionCallback ( NavCBRecPtr callBackParms )
+//{
+//    OSStatus err;
+//    long int n;
+//    NavReplyRecord * nReply = new NavReplyRecord;
+//    err = NavDialogGetReply ( callBackParms->context, nReply );
+//    if ( err != noErr ) {
+//        NavDisposeReply( nReply );
+//        return;
+//    } 
+//
+//    NavUserAction userAction; 
+//    userAction = NavDialogGetUserAction( callBackParms->context );
+//
+//    switch ( userAction )
+//    {
+//    case kNavUserActionOpen:
+//        AECountItems( &(nReply->selection), &n ) ;
+//        if ( n != 0 ) { 
+//            AEKeyword aeKey;
+//            AEDesc record;
+//            FSRef fref;
+//            char newfilename[512];
+//            openfD = new fileData();
+//            fileData * newfD = openfD;
+//            for ( int i = 0; i < n ; i++ ) { 
+//                if ( i != 0 ) { 
+//                    newfD->next = new fileData();
+//                    newfD = newfD->next;
+//                }                
+//
+//                AEGetNthDesc (&(nReply->selection), i+1, typeFSRef, &aeKey, &record );
+//                err = AEGetDescData( &record, ( void * )( &fref ), sizeof( FSRef ) );      
+//                FSRefMakePath( &fref, (UInt8*)newfilename, 512);
+//                // fprintf(stderr, "open: %s\n", newfilename );
+//                newfD->fileName = newfilename;
+//                newfD->isDir = false;
+//            }
+//        }
+//
+//        break;
+//    case kNavUserActionSaveAs:
+//        AECountItems( &(nReply->selection), &n ) ;
+//        if ( n != 0 ) { 
+//            AEKeyword aeKey;
+//            AEDesc record;
+//            FSRef fref;
+//            char newfilename[512];
+//            char fileSaveName[512];
+//            savefD = new fileData();
+//            for ( int i = 0; i < n ; i++ ) { 
+//                AEGetNthDesc (&(nReply->selection), i+1, typeFSRef, &aeKey, &record );
+//                err = AEGetDescData( &record, ( void * )( &fref ), sizeof( FSRef ) );      
+//                FSRefMakePath( &fref, (UInt8*)newfilename, 512);
+//                // fprintf(stderr, "save: %s\n", newfilename );
+//                savefD->fileName = newfilename;
+//                savefD->isDir = false;
+//
+//                const char * fname  = CFStringGetCStringPtr( nReply->saveFileName, kCFStringEncodingASCII );
+//                if ( fname ) {
+//                    // fprintf(stderr, "file is %s\n", fname);
+//                    savefD->fileName += "/";
+//                    savefD->fileName += fname;
+//                }
+//                else { 
+//                    CFStringGetCString ( nReply->saveFileName, (char*)fileSaveName, 512, kCFStringEncodingASCII );
+//                    savefD->fileName += "/";
+//                    savefD->fileName += fileSaveName;
+//                    // fprintf(stderr, "no filename given\n");
+//                }
+//
+//            }
+//        }
+//        break;
+//    }
+//    NavDisposeReply( nReply );
+//}
 
-    NavUserAction userAction; 
-    userAction = NavDialogGetUserAction( callBackParms->context );
 
-    switch ( userAction )
-    {
-    case kNavUserActionOpen:
-        AECountItems( &(nReply->selection), &n ) ;
-        if ( n != 0 ) { 
-            AEKeyword aeKey;
-            AEDesc record;
-            FSRef fref;
-            char newfilename[512];
-            openfD = new fileData();
-            fileData * newfD = openfD;
-            for ( int i = 0; i < n ; i++ ) { 
-                if ( i != 0 ) { 
-                    newfD->next = new fileData();
-                    newfD = newfD->next;
-                }                
-
-                AEGetNthDesc (&(nReply->selection), i+1, typeFSRef, &aeKey, &record );
-                err = AEGetDescData( &record, ( void * )( &fref ), sizeof( FSRef ) );      
-                FSRefMakePath( &fref, (UInt8*)newfilename, 512);
-                // fprintf(stderr, "open: %s\n", newfilename );
-                newfD->fileName = newfilename;
-                newfD->isDir = false;
-            }
-        }
-
-        break;
-    case kNavUserActionSaveAs:
-        AECountItems( &(nReply->selection), &n ) ;
-        if ( n != 0 ) { 
-            AEKeyword aeKey;
-            AEDesc record;
-            FSRef fref;
-            char newfilename[512];
-            char fileSaveName[512];
-            savefD = new fileData();
-            for ( int i = 0; i < n ; i++ ) { 
-                AEGetNthDesc (&(nReply->selection), i+1, typeFSRef, &aeKey, &record );
-                err = AEGetDescData( &record, ( void * )( &fref ), sizeof( FSRef ) );      
-                FSRefMakePath( &fref, (UInt8*)newfilename, 512);
-                // fprintf(stderr, "save: %s\n", newfilename );
-                savefD->fileName = newfilename;
-                savefD->isDir = false;
-
-                const char * fname  = CFStringGetCStringPtr( nReply->saveFileName, kCFStringEncodingASCII );
-                if ( fname ) {
-                    // fprintf(stderr, "file is %s\n", fname);
-                    savefD->fileName += "/";
-                    savefD->fileName += fname;
-                }
-                else { 
-                    CFStringGetCString ( nReply->saveFileName, (char*)fileSaveName, 512, kCFStringEncodingASCII );
-                    savefD->fileName += "/";
-                    savefD->fileName += fileSaveName;
-                    // fprintf(stderr, "no filename given\n");
-                }
-
-            }
-        }
-        break;
-    }
-    NavDisposeReply( nReply );
-}
-
-
-pascal void dialogFileCallback (
-    NavEventCallbackMessage callBackSelector, 
-    NavCBRecPtr  callBackParams, 
-    void*   callBackUD )
-{ 
-    switch ( callBackSelector )
-    {
-    case kNavCBUserAction:
-        userActionCallback( callBackParams );
-        break;
-    case kNavCBTerminate:
-        NavDialogDispose( callBackParams->context );
-        DisposeNavEventUPP( gNavEventHandlerPtr );
-        break;
-    }
-}
+//pascal void dialogFileCallback (
+//    NavEventCallbackMessage callBackSelector, 
+//    NavCBRecPtr  callBackParams, 
+//    void*   callBackUD )
+//{ 
+//    switch ( callBackSelector )
+//    {
+//    case kNavCBUserAction:
+//        userActionCallback( callBackParams );
+//        break;
+//    case kNavCBTerminate:
+//        NavDialogDispose( callBackParams->context );
+//        DisposeNavEventUPP( gNavEventHandlerPtr );
+//        break;
+//    }
+//}
 
 fileData * MacOSXDirScanner::openFileDialog()
 {
-    OSStatus   err;
-    NavDialogRef  openDialog;
-    NavDialogCreationOptions dialogAttributes;
-    
-    int n = 0;
-
-    if( openfD ) { 
-        delete openfD;
-        openfD = NULL;
-    }
-
-    if( AudicleWindow::our_fullscreen )
-    {
-        glutReshapeWindow( AudicleWindow::main()->m_w, AudicleWindow::main()->m_h );
-        glutPostRedisplay();
-        AudicleWindow::our_fullscreen = FALSE;
-        return NULL;
-    }
-
-    // last
-    // if( BirdBrain::our_last_open_dir != "" )
-    //     BirdBrain::goto_dir( BirdBrain::our_last_open_dir );
-
-    err = NavGetDefaultDialogCreationOptions( &dialogAttributes );
-    
-    dialogAttributes.modality = kWindowModalityAppModal;   
-    
-    gNavEventHandlerPtr = NewNavEventUPP( dialogFileCallback );    
-    
-    err = NavCreateGetFileDialog( &dialogAttributes, NULL, 
-                                  gNavEventHandlerPtr, NULL, NULL, 
-                                  NULL, &openDialog );
-    
-    if ( !AudicleGfx::cursor_on ) { ShowCursor(); AudicleGfx::cursor_on = true; }
-    err = NavDialogRun( openDialog );
-    
-    if ( err != noErr )
-    {
-        NavDialogDispose( openDialog );
-        DisposeNavEventUPP( gNavEventHandlerPtr );
-        return NULL;
-    }
-
+//    OSStatus   err;
+//    NavDialogRef  openDialog;
+//    NavDialogCreationOptions dialogAttributes;
+//    
+//    int n = 0;
+//
+//    if( openfD ) { 
+//        delete openfD;
+//        openfD = NULL;
+//    }
+//
+//    if( AudicleWindow::our_fullscreen )
+//    {
+//        glutReshapeWindow( AudicleWindow::main()->m_w, AudicleWindow::main()->m_h );
+//        glutPostRedisplay();
+//        AudicleWindow::our_fullscreen = FALSE;
+//        return NULL;
+//    }
+//
+//    // last
+//    // if( BirdBrain::our_last_open_dir != "" )
+//    //     BirdBrain::goto_dir( BirdBrain::our_last_open_dir );
+//
+//    err = NavGetDefaultDialogCreationOptions( &dialogAttributes );
+//    
+//    dialogAttributes.modality = kWindowModalityAppModal;   
+//    
+//    gNavEventHandlerPtr = NewNavEventUPP( dialogFileCallback );    
+//    
+//    err = NavCreateGetFileDialog( &dialogAttributes, NULL, 
+//                                  gNavEventHandlerPtr, NULL, NULL, 
+//                                  NULL, &openDialog );
+//    
+//    if ( !AudicleGfx::cursor_on ) { ShowCursor(); AudicleGfx::cursor_on = true; }
+//    err = NavDialogRun( openDialog );
+//    
+//    if ( err != noErr )
+//    {
+//        NavDialogDispose( openDialog );
+//        DisposeNavEventUPP( gNavEventHandlerPtr );
+//        return NULL;
+//    }
+//
     return openfD;
 }
 
 fileData * MacOSXDirScanner::saveFileDialog()
 {
-    //XXX not finished yet. 
-
-    BB_log( BB_LOG_INFO, "opening OSX file save dialog" );
-    OSStatus   err;
-    NavDialogRef  saveDialog;
-
-    NavDialogCreationOptions dialogAttributes;
-        
-    int n = 0;
-    if ( savefD ) { 
-        delete savefD;
-        savefD = NULL;
-    }
-
-    if( AudicleWindow::our_fullscreen )
-    {
-        glutReshapeWindow( AudicleWindow::main()->m_w, AudicleWindow::main()->m_h );
-        glutPostRedisplay();
-        AudicleWindow::our_fullscreen = FALSE;
-        return NULL;
-    }
-
-    err = NavGetDefaultDialogCreationOptions( &dialogAttributes );
-    
-    dialogAttributes.modality = kWindowModalityAppModal;   
-    
-    gNavEventHandlerPtr = NewNavEventUPP( dialogFileCallback );    
-    
-    err = NavCreatePutFileDialog( &dialogAttributes, 'ChuK', kNavGenericSignature,
-                                  gNavEventHandlerPtr, NULL, &saveDialog );
-    
-    if ( !AudicleGfx::cursor_on ) { ShowCursor(); AudicleGfx::cursor_on = true; }
-    err = NavDialogRun( saveDialog );
-    
-    if ( err != noErr )
-    {
-        NavDialogDispose( saveDialog );
-        DisposeNavEventUPP( gNavEventHandlerPtr );
-        return NULL;
-    }
+//    //XXX not finished yet. 
+//
+//    BB_log( BB_LOG_INFO, "opening OSX file save dialog" );
+//    OSStatus   err;
+//    NavDialogRef  saveDialog;
+//
+//    NavDialogCreationOptions dialogAttributes;
+//        
+//    int n = 0;
+//    if ( savefD ) { 
+//        delete savefD;
+//        savefD = NULL;
+//    }
+//
+//    if( AudicleWindow::our_fullscreen )
+//    {
+//        glutReshapeWindow( AudicleWindow::main()->m_w, AudicleWindow::main()->m_h );
+//        glutPostRedisplay();
+//        AudicleWindow::our_fullscreen = FALSE;
+//        return NULL;
+//    }
+//
+//    err = NavGetDefaultDialogCreationOptions( &dialogAttributes );
+//    
+//    dialogAttributes.modality = kWindowModalityAppModal;   
+//    
+//    gNavEventHandlerPtr = NewNavEventUPP( dialogFileCallback );    
+//    
+//    err = NavCreatePutFileDialog( &dialogAttributes, 'ChuK', kNavGenericSignature,
+//                                  gNavEventHandlerPtr, NULL, &saveDialog );
+//    
+//    if ( !AudicleGfx::cursor_on ) { ShowCursor(); AudicleGfx::cursor_on = true; }
+//    err = NavDialogRun( saveDialog );
+//    
+//    if ( err != noErr )
+//    {
+//        NavDialogDispose( saveDialog );
+//        DisposeNavEventUPP( gNavEventHandlerPtr );
+//        return NULL;
+//    }
     
     return savefD;
 }
