@@ -2356,11 +2356,12 @@ void msg_box( const char * title, const char * msg )
     }
 
     // from http://www.gamedev.net/reference/articles/article2281.asp
-    Str255 strTitle;
-    Str255 strMessage;
-    CopyCStringToPascal( title, strTitle );
-    CopyCStringToPascal( msg, strMessage );
-    StandardAlert( kAlertNoteAlert, strTitle, strMessage, NULL, 0 );
+    // TODO: rewrite
+//    Str255 strTitle;
+//    Str255 strMessage;
+//    CopyCStringToPascal( title, strTitle );
+//    CopyCStringToPascal( msg, strMessage );
+//    StandardAlert( kAlertNoteAlert, strTitle, strMessage, NULL, 0 );
 #else    
     if( g_ok ) return;
     g_ok = TRUE;
