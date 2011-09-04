@@ -2,7 +2,7 @@
 CC=gcc
 CHUCK_DIR=../../../chuck_dev/v2
 INCLUDES=-I$(CHUCK_DIR)
-FLAGS=-D__MACOSX_CORE__ -O3 -c
+FLAGS=-D__MACOSX_CORE__ -O3 -c -m32
 LIBS=-framework CoreAudio -framework CoreMIDI -framework CoreFoundation -framework OpenGL -framework GLUT -framework AppKit -framework Carbon -framework IOKit -lstdc++ -lm 
 
 TAPS_OBJS= taps_analysis.o taps_birdbrain.o taps_driver.o \
@@ -67,7 +67,7 @@ LIBS+=-lxml2
 
 
 taps: $(OBJS) chuck
-	g++ -o taps $(OBJS) $(LIBS)
+	g++ -o taps -m32 $(OBJS) $(LIBS)
 
 chuck:
 	make -C $(CHUCK_DIR) osx
